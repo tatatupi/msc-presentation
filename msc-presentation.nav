@@ -6,23 +6,44 @@
 \headcommand {\beamer@subsectionpages {1}{2}}
 \headcommand {\sectionentry {1}{Motiva\c c\~ao}{3}{Motiva\c c\~ao}{0}}
 \headcommand {\beamer@subsectionpages {3}{2}}
-\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Mercado de Sensores}}
-\headcommand {\slideentry {1}{1}{1}{3/3}{Mercado de Sensores}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{3}{Populariza\c c\~ao de Redes de Sensores}}
+\headcommand {\slideentry {1}{1}{1}{3/3}{Populariza\c c\~ao de Redes de Sensores}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{1}{2}{4/4}{Mercado de Sensores}{0}}
+\headcommand {\slideentry {1}{1}{2}{4/4}{Populariza\c c\~ao de Redes de Sensores}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{1}{3}{5/5}{Mercado de Sensores}{0}}
+\headcommand {\slideentry {1}{1}{3}{5/5}{Populariza\c c\~ao de Redes de Sensores}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {1}{1}{4}{6/6}{Mercado de Sensores}{0}}
+\headcommand {\beamer@subsectionpages {3}{5}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{6}{Desafios}}
+\headcommand {\slideentry {1}{2}{1}{6/6}{Desafios}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{1}{5}{7/7}{Mercado de Sensores}{0}}
+\headcommand {\slideentry {1}{2}{2}{7/7}{Desafios}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {1}{1}{6}{8/8}{Mercado de Sensores}{0}}
+\headcommand {\slideentry {1}{2}{3}{8/8}{Desafios}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{1}{7}{9/9}{Mercado de Sensores}{0}}
+\headcommand {\slideentry {1}{2}{4}{9/9}{Desafios}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@partpages {1}{9}}
-\headcommand {\beamer@subsectionpages {3}{9}}
-\headcommand {\beamer@sectionpages {3}{9}}
-\headcommand {\beamer@documentpages {9}}
-\headcommand {\gdef \inserttotalframenumber {8}}
+\headcommand {\slideentry {1}{2}{5}{10/10}{Desafios}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@subsectionpages {6}{10}}
+\headcommand {\beamer@subsectionentry {0}{1}{3}{11}{Objetivos}}
+\headcommand {\slideentry {1}{3}{1}{11/11}{Objetivos}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {1}{3}{2}{12/12}{Objetivos}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@sectionpages {3}{12}}
+\headcommand {\beamer@subsectionpages {11}{12}}
+\headcommand {\sectionentry {2}{Metodologia}{13}{Metodologia}{0}}
+\headcommand {\beamer@subsectionpages {13}{12}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{13}{Modelo de Amostragem Irregular}}
+\headcommand {\slideentry {2}{1}{1}{13/13}{Modelo de Amostragem Irregular}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {2}{1}{2}{14/14}{Modelo de Amostragem Irregular}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {2}{1}{3}{15/15}{Modelo de Amostragem Irregular}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\beamer@partpages {1}{15}}
+\headcommand {\beamer@subsectionpages {13}{15}}
+\headcommand {\beamer@sectionpages {13}{15}}
+\headcommand {\beamer@documentpages {15}}
+\headcommand {\gdef \inserttotalframenumber {9}}
