@@ -95,37 +95,43 @@
 %			\insertframenumber{} / \inserttotalframenumber\hspace*{1ex}
 %		\end{beamercolorbox}}%
 %	\vskip0pt%
-%}
+%%}
+%\setbeamercolor{title}{fg=red!70!black}
+%\setbeamercolor{subtitle}{fg=black!100}
+%\setbeamercolor{author}{fg=blue!50!black}
+%\setbeamercolor{institute}{fg=blue!70!black}
+%\setbeamercolor{frametitle}{fg=red!90!black}
+%\setbeamercolor{framesubtitle}{fg=red!80!green!50}
 
+\titlegraphic{
+	\vspace{\fill}
+	\includegraphics[width = 1.5cm]{template/ufmg-logo.png}
+	 \hspace*{\fill}
+	\includegraphics[height=0.8cm]{template/macsin-logo.pdf}
+}
 
-
-\title[Cryptocurrencies Transactions Advisor]{Cryptocurrencies Transactions Advisor Using a Genetic Mamdani-type Fuzzy Rules Based System}
+\title[Sensor Fusion for Irregularly Sampled Systems]{Sensor Fusion for Irregularly Sampled Systems}
 
 % A subtitle is optional and this may be deleted
 %\subtitle{Optional Subtitle}
 
-\author{T.~Tupinambas\inst{1} \and R.~Leão\inst{2} \and A.~Lemos\inst{1}}
+\author{Taiguara Tupinambás}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[] % (optional, but mostly needed)
-{
-	\inst{1}%
-	Graduate Program in Electrical Engineering\\
-	Federal University of Minas Gerais
-	\and
-	\inst{2}%
-	Cadence Design Systems, Inc.}
-% - Use the \inst command only if there are several affiliations.
-% - Keep it simple, no one is interested in your street address.
+\institute[]{Laboratório de Modelagem, Análise e Controle de Sistemas Não-Lineares (MACSIN) \\ Programa de Pós-Graduação em Engenharia Elétrica (PPGEE) \\ Universidade Federal de Minas Gerais (UFMG)}
 
-\date[FUZZ-IEEE, 2018]{IEEE International Conference on Fuzzy Systems, 2018}
+\vspace{0.5cm}
+
+\date[Fevereiro 2019]{21 de Fevereiro, 2019}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
 
-\subject{Theoretical Computer Science}
+
+
+\subject{Electrical Engineering}
 % This is only inserted into the PDF information catalog. Can be left
 % out. 
 
@@ -140,7 +146,7 @@
 % the beginning of each subsection:
 \AtBeginSubsection[]
 {
-	\begin{frame}<beamer>{Outline}
+\begin{frame}<beamer>{Sumário}
 	\tableofcontents[currentsection,currentsubsection]
 \end{frame}
 }
@@ -160,7 +166,7 @@
 %  \titlepage
 %\end{frame}
 
-\begin{frame}{Outline}
+\begin{frame}{Sumário}
 \tableofcontents
 % You might wish to add the option [pausesections]
 \end{frame}
@@ -169,16 +175,29 @@
 % and table of contents.
 
 %------------------------------------------------SECTION---------------------------------
-\section{Motivation} 
+\section{Motivação} 
 %------------------------------------------------SUBSECTION------------------------------
 
-\subsection{Sensor Market}
+\subsection{Mercado de Sensores}
 
 \begin{frame}
-\frametitle{Growth}
-Global Sensor Market is expected to garner USD 241 billion by 2022, registering a CAGR of 11.3 \% during the forecast period 2016 - 2022. Sensor is a device that detects physical input such as light, heat, motion, moisture, pressure, or any other entity, and responds by producing an output on a display or transmits the information in electronic form for further processing. The sensors find their applications in various industries such as electronics, IT \& telecommunication, automotive and healthcare among others. 
+\frametitle{Crescimento}
 
-In the current scenario, smart grid, smart homes, smart water networks, intelligent transportation are infrastructure systems that connect our world are trending. These systems are assembled through the use of sensors, and the entire physical infrastructure is closely coupled with information and communication technologies. Intelligent monitoring and management can be achieved via the usage of networked embedded systems, in which devices are interconnected to transmit useful measurement information and control instructions via distributed sensor networks. 
+Mercado mundial de sensores é previsto para crescer a uma taxa de 11.3\% a.a. no período 2016-2022 
+Atingir USD 241 em 2022
+
+\centering
+%\caption{}t
+\includegraphics[width=0.7\textwidth]{images/impact_factors.png}
+\par
+\vspace{0.3cm}
+\tiny Fonte: Allied Market Research
+
+
+%
+%Global Sensor Market is expected to garner USD 241 billion by 2022, registering a CAGR of 11.3 \% during the forecast period 2016 - 2022. Sensor is a device that detects physical input such as light, heat, motion, moisture, pressure, or any other entity, and responds by producing an output on a display or transmits the information in electronic form for further processing. The sensors find their applications in various industries such as electronics, IT \& telecommunication, automotive and healthcare among others. 
+%
+%In the current scenario, smart grid, smart homes, smart water networks, intelligent transportation are infrastructure systems that connect our world are trending. These systems are assembled through the use of sensors, and the entire physical infrastructure is closely coupled with information and communication technologies. Intelligent monitoring and management can be achieved via the usage of networked embedded systems, in which devices are interconnected to transmit useful measurement information and control instructions via distributed sensor networks. 
 
 
 \end{frame}
