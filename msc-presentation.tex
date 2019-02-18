@@ -82,7 +82,7 @@
 
 \newcolumntype{M}{>{\centering\arraybackslash}m{4cm}}
 
-
+\usepackage{multirow}
 
 
 \usepackage{adjustbox}
@@ -145,7 +145,7 @@
 % A subtitle is optional and this may be deleted
 %\subtitle{Optional Subtitle}
 
-\author{Taiguara Tupinambás}
+\author[Taiguara Tupinambás]{\Large Taiguara Tupinambás\\{\vspace{0.3cm}\footnotesize \textbf{Orientador por}: Prof. Dr. Bruno Teixeira e Prof. Dr. Leonardo Tôrres}}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
@@ -158,7 +158,6 @@
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
-
 
 
 \subject{Electrical Engineering}
@@ -217,12 +216,40 @@
 	\item CAGR de 11.3\% a.a. no período 2016-2022 
 	\item USD 241 bilhões em 2022
 \end{itemize}
-\vfill
+
 \centering
-%\caption{}t
-\includegraphics[width=0.6\textwidth]{images/impact_factors.png}
-\par
-\tiny Fonte: Allied Market Research
+
+\begin{minipage}[t]{0.49\linewidth}
+	\centering
+
+	\par
+	\vspace{0.5cm}
+	\centering
+	%\caption{}t
+	\includegraphics[width=1\textwidth]{images/impact_factors.png}
+
+	\par
+	\vspace{0.1cm}
+	\tiny Fonte: Allied Market Research, 2016
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}
+	\centering
+
+	\par
+	\vspace{0.5cm}
+	\centering
+	%\caption{}t
+	\includegraphics[width=0.75\textwidth]{images/sensores.png}
+
+	\par
+	\tiny Fonte: Postscape, 2015
+\end{minipage}
+
+
+%
+%%\includegraphics[width=0.6\textwidth]{images/impact_factors.png}t
+%\par
+%\tiny Fonte: Allied Market Research, 2016
 
 \end{frame}
 
@@ -263,21 +290,22 @@
 %------------------------------------------------
 %------------------------------------------------SUBSECTION------------------------------
 
-\subsection{Desafios}
-
 \begin{frame}
 \frametitle{Desafios}
 
+Aplicações de fusão sensorial clássicas consideram que as informações são \textbf{recebidas de forma regular}.  Caso não sejam, é possível adaptar os algoritmos considerando os \textbf{carimbos de tempo correta.} 
+
+\vspace{0.5cm}
 \begin{block}{}
 	Falta de sincronização entre os múltiplos sensores da rede pode levar a \textbf{amostragem irregular} sem informação confiável de \textbf{carimbo de tempo}
 \end{block}
 
-\vspace{1cm}
+\vspace{0.5cm}
 
 \textbf{Soluções}:
 
 \begin{itemize}
-	\item Investir em sincronização
+	\item Investir em sincronização e em capacidade computacional
 	\item Deslocar os instantes de tempo
 \end{itemize}
 
@@ -295,29 +323,40 @@
 
 %------------------------------------------------
 
+%\begin{frame}
+%\frametitle{Efeitos de se deslocar os instantes de tempo}
+%
+%\includegraphics[width=\textwidth]{images/Gs_error.eps}
+%
+%
+%\end{frame}
+%------------------------------------------------
+
 \begin{frame}
 \frametitle{Efeitos de se deslocar os instantes de tempo}
+Evolução do erro de estimação de um estado, para estimadores que consideram o carimbo de tempo (\color{red}vermelho\color{black}) e não consideram (\color{blue}azul\color{black})
+\vfill
 
-\includegraphics[width=\textwidth]{images/Gs_error.eps}
-
+\centering
+\includegraphics[width=0.75\textheight]{images/LinearJEvolution.eps}
 
 \end{frame}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Vale a pena investir em sincronização?}
+\frametitle{Vale a pena investir em sincronização e capacidade computacional?}
 
 
 \begin{itemize}
-	\item Qual a relevância do erro para os objetivos da fusão sensorial?
-	\item Quais são os fatores que influenciam o desempenho?
+	\item Qual a \textbf{relevância} do erro para os objetivos da fusão sensorial?
+	\item Quais são os \textbf{fatores} que influenciam o desempenho?
 \end{itemize}
 
 \vfill
 
 \begin{block}{}
 \centering
-Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistemas amostrados
+Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistemas amostrados \textit{aperiodicamente}
 \end{block}
 
 
@@ -332,10 +371,10 @@ Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistema
 
 
 \begin{enumerate}
-	\item Revisar os métodos de fusão sensorial e o problema de amostragem irregular;
-	\item Discutir os algoritmos e suas adaptaçãos ao modelo de medição amostrado irregularmente, sem carimbo de tempo;
-	\item Desenvolver uma metodologia para estudar os efeitos de desconsiderar os carimbos de tempo;
-	\item Aplicar a metodologia em um sistema linear e outro não-linear, utilizando índices de desempenho que avaliam a precisão e a consistência de estimação;
+	\item Revisar os métodos de \textbf{fusão sensorial} e o problema de \textbf{amostragem irregular};
+	\item Discutir os algoritmos e suas \textbf{adaptaçãos} ao modelo de amostragem aperiódica;
+	\item Desenvolver uma \textbf{metodologia} para estudar os efeitos de desconsiderar os carimbos de tempo;
+	\item Aplicar a metodologia em um sistema linear e outro não-linear, utilizando testes numéricos para \textbf{avaliar precisão e consistência} das estimativas;
 \end{enumerate}
 
 \end{frame}
@@ -347,29 +386,32 @@ Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistema
 %------------------------------------------------
 %------------------------------------------------SUBSECTION------------------------------
 
-\subsection{Modelo de Amostragem Irregular}
+\subsection{Modelo de Amostragem: Aperiódica}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Modelo de Amostragem Irregular}
+\frametitle{Modelo de Amostragem: Aperiódica}
 
 \begin{block}{}
-Instantes de amostragem modelados por um processo de Poisson:
+Instantes de amostragem modelados por um \textbf{processo de Poisson}:
 \end{block}
 
-
-\begin{align}
-P\left(N(t)=n\right) &= e^{-\lambda t}\frac{(\lambda t)^n}{n!} \notag\\ \notag\\
-\rho_{h_k}(t) &= \lambda e^{-\lambda t}\notag
-\end{align}
+\begin{equation}
+%P\left(N(t)=n\right) &= e^{-\lambda t}\frac{(\lambda t)^n}{n!} \notag\\ 
+\rho_{h_k}(t) = \lambda e^{-\lambda t}\notag
+\end{equation} \\
+$\lambda \rightarrow$ frequência média de amostragem
+\centering
+\vfill
+\includegraphics[width=0.75\textwidth]{images/processo_amost.pdf}
 \end{frame}
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{Modelo de Amostragem Irregular}
-\centering
-\includegraphics[width=1\textwidth]{images/poisson_proc.pdf}
-\end{frame}
+%
+%\begin{frame}
+%\frametitle{Modelo de Amostragem Irregular}
+%\centering
+%\includegraphics[width=1\textwidth]{images/poisson_proc.pdf}
+%\end{frame}
 %------------------------------------------------
 %------------------------------------------------SUBSECTION------------------------------
 
@@ -396,7 +438,7 @@ P\left(N(t)=n\right) &= e^{-\lambda t}\frac{(\lambda t)^n}{n!} \notag\\ \notag\\
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Sistemas Não Lineares}
+\frametitle{Sistemas Amostrados Não Lineares}
 
 \begin{align}
 \dot{x}(t) &= f(x(t), u(t), w(t), t) \notag \\ 
@@ -417,7 +459,7 @@ t_{k+1} &= t_k + h_k, \label{eq:time_interval} \notag
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Sistemas Lineares}
+\frametitle{Sistemas Amostrados Lineares}
 
 
 \begin{align}
@@ -442,7 +484,7 @@ x(t_{k+1}) = A_\text{d}(t_k,t_{k+1}) x(t_k) + B_\text{d}(t_k,t_{k+1}) u(t_k) + w
 \begin{frame}
 \frametitle{Formulação do Problema}
 
-Queremos estimar o vetor de estados $x(t)$ e sua covariância de forma recursiva, em intervalos igualmente espaçados $T$, considerando:
+Queremos estimar o vetor de estados $x(iT)$ e sua covariância de forma recursiva, em intervalos igualmente espaçados $T$, considerando:
 \vspace{0.5cm}
 \begin{itemize}
 	\item Instantes de tempo das observações $t_k$ é definido pelo intervalo:
@@ -463,7 +505,7 @@ Queremos estimar o vetor de estados $x(t)$ e sua covariância de forma recursiva,
 %------------------------------------------------
 %------------------------------------------------SUBSECTION------------------------------
 
-\subsection{Estimação com Amostragem Aperiodica}
+\subsection{Estimação com Amostragem Aperiódica}
 
 \begin{frame}
 \frametitle{Instantes de Estimação e de Observação}
@@ -550,7 +592,7 @@ Queremos estimar o vetor de estados $x(t)$ e sua covariância de forma recursiva,
 	\begin{itemize}
 		\item \textbf{Sem carimbo}:
 			\begin{enumerate}
-				\item completo, de $8T$ a $9T$, com $t_2 = 9T$;
+				\item completo, de $8T$ a $9T$, com $t_3 = 9T$;
 			\end{enumerate}
 	\end{itemize}
 \end{minipage}
@@ -558,45 +600,45 @@ Queremos estimar o vetor de estados $x(t)$ e sua covariância de forma recursiva,
 \end{frame}
 
 %------------------------------------------------
-
-\begin{frame}
-\frametitle{Estimador com carimbo de tempo}
-\begin{figure}[!htb]
-	\centering
-	\begin{adjustbox}{width=0.65\textwidth,height=0.8\textheight,keepaspectratio}
-		
-		\begin{tikzpicture}[node distance=2cm, font = \scriptsize]
-		
-		\node(start)[startstop][text width=2.8cm,align=center]{\textbf{Start} \\ $t^*_0=0$; \\ $i=j=k=1$; \\};
-		
-		\node (dec1) [decision, below of=start,yshift=-0.5cm] {Signal Received};
-		
-		\node (pro1) [process, below right of=dec1, yshift=-0.9cm, xshift=0.25cm][text width=2.8cm,align=center]{Calculate \\ $\delta t^*_{j} = iT - t^*_{j-1}$ \\ $t^*_{j} = t^*_{j-1} + \delta t^*_{j}$};
-		
-		\node (pro12) [process, below of=pro1][text width=2.8cm,align=center, yshift=0.5cm]{Forecast Step};
-		
-		\node (pro2) [process, below left of=dec1,  yshift=-0.9cm, xshift=-0.25cm][text width=2.8cm,align=center]{Calculate \\ $\delta t^*_{j} = t_k - t^*_{j-1}$ \\ $t^*_{j} = t^*_{j-1} + \delta t^*_{j}$};
-		
-		\node (pro22) [process, below of=pro2][text width=2.8cm,align=center, yshift=0.5cm]{Forecast Step, using ZOH};
-		
-		\node (pro23) [process, below of=pro22][text width=2.8cm,align=center, yshift=0.7cm]{Data Assimilation \\ Step};
-		
-		\node (pro3) [startstop, below of = pro23][text width=2.8cm,align=center, xshift=1.8cm]{Estimate at $t^*_{j}$};
-		
-		\draw [arrow] (start) -- node[pos=0.5](h){} (dec1);
-		\draw [arrow] (dec1) -| node[text width=2.8cm,align=center,anchor=west,xshift=-1cm] {Input \\ Signal} (pro1);
-		\draw [arrow] (dec1) -| node[text width=2.8cm,align=center,anchor=east,xshift=0.8cm] {Observation\\ Signal} (pro2);
-		\draw [arrow] (pro1) -- (pro12);
-		\draw [arrow] (pro2) -- (pro22);
-		\draw [arrow] (pro22) -- (pro23);
-		\draw [arrow] (pro12) -- node[text width=2.8cm,align=center,anchor=south,xshift=0.8cm, yshift=-1cm] {$i=i+1$} (pro3);
-		\draw [arrow] (pro23) -- node[text width=2.8cm,align=center,anchor=east,xshift=0.6cm] {$k=k+1$}(pro3);
-		\draw [arrow] (pro3) --+(-4cm,0) |- node[text width=2.8cm,align=center,anchor=south,xshift=1cm] {$j=j+1$}(h);
-		\end{tikzpicture}
-	\end{adjustbox}
-\end{figure}	
-
-\end{frame}
+%
+%\begin{frame}
+%\frametitle{Estimador com carimbo de tempo}
+%\begin{figure}[!htb]
+%	\centering
+%	\begin{adjustbox}{width=0.65\textwidth,height=0.8\textheight,keepaspectratio}
+%		
+%		\begin{tikzpicture}[node distance=2cm, font = \scriptsize]
+%		
+%		\node(start)[startstop][text width=2.8cm,align=center]{\textbf{Start} \\ $t^*_0=0$; \\ $i=j=k=1$; \\};
+%		
+%		\node (dec1) [decision, below of=start,yshift=-0.5cm] {Signal Received};
+%		
+%		\node (pro1) [process, below right of=dec1, yshift=-0.9cm, xshift=0.25cm][text width=2.8cm,align=center]{Calculate \\ $\delta t^*_{j} = iT - t^*_{j-1}$ \\ $t^*_{j} = t^*_{j-1} + \delta t^*_{j}$};
+%		
+%		\node (pro12) [process, below of=pro1][text width=2.8cm,align=center, yshift=0.5cm]{Forecast Step};
+%		
+%		\node (pro2) [process, below left of=dec1,  yshift=-0.9cm, xshift=-0.25cm][text width=2.8cm,align=center]{Calculate \\ $\delta t^*_{j} = t_k - t^*_{j-1}$ \\ $t^*_{j} = t^*_{j-1} + \delta t^*_{j}$};
+%		
+%		\node (pro22) [process, below of=pro2][text width=2.8cm,align=center, yshift=0.5cm]{Forecast Step, using ZOH};
+%		
+%		\node (pro23) [process, below of=pro22][text width=2.8cm,align=center, yshift=0.7cm]{Data Assimilation \\ Step};
+%		
+%		\node (pro3) [startstop, below of = pro23][text width=2.8cm,align=center, xshift=1.8cm]{Estimate at $t^*_{j}$};
+%		
+%		\draw [arrow] (start) -- node[pos=0.5](h){} (dec1);
+%		\draw [arrow] (dec1) -| node[text width=2.8cm,align=center,anchor=west,xshift=-1cm] {Input \\ Signal} (pro1);
+%		\draw [arrow] (dec1) -| node[text width=2.8cm,align=center,anchor=east,xshift=0.8cm] {Observation\\ Signal} (pro2);
+%		\draw [arrow] (pro1) -- (pro12);
+%		\draw [arrow] (pro2) -- (pro22);
+%		\draw [arrow] (pro22) -- (pro23);
+%		\draw [arrow] (pro12) -- node[text width=2.8cm,align=center,anchor=south,xshift=0.8cm, yshift=-1cm] {$i=i+1$} (pro3);
+%		\draw [arrow] (pro23) -- node[text width=2.8cm,align=center,anchor=east,xshift=0.6cm] {$k=k+1$}(pro3);
+%		\draw [arrow] (pro3) --+(-4cm,0) |- node[text width=2.8cm,align=center,anchor=south,xshift=1cm] {$j=j+1$}(h);
+%		\end{tikzpicture}
+%	\end{adjustbox}
+%\end{figure}	
+%
+%\end{frame}
 
 %------------------------------------------------
 
@@ -611,16 +653,14 @@ Queremos estimar o vetor de estados $x(t)$ e sua covariância de forma recursiva,
 %------------------------------------------------
 \begin{frame}
 \frametitle{Diretamente proporcional à derivada do sinal}
-
+Para um modelo de medição linear e \textbf{$\delta_k = nT - t_k$},
 \begin{align}
-e_k &= C[x(t_k)-x(t_k + \delta_k)], \label{eq:error_k} \notag \\
-\delta_k &= nT - t_k \notag \\ \notag \\ 
-\frac{e_k}{\delta_k} &= C\left( \frac{[x(t_k)-x(t_k + \delta_k)]}{\delta_k}\right),\notag \\
+e_k &= C[x(t_k)-x(t_k + \delta_k)], \notag \\
 e_k & = C\left(\frac{[x(t_k)-x(t_k + \delta_k)]}{\delta_k}\right)\delta_k, \notag \\
 e_k & \approx -C\frac{dx}{dt}\delta_k, \notag \\
 e_k & \approx -\frac{dy}{dt}\delta_k. \notag 
 \end{align}
-
+%\delta_k &= nT - t_k \notag \\
 \end{frame}
 %------------------------------------------------
 
@@ -636,7 +676,10 @@ e_k & \approx -\frac{dy}{dt}\delta_k. \notag
 \begin{frame}
 \frametitle{Em função do ruído e da frequência média de amostragem}
 \centering
-\includegraphics[height=0.8\textheight]{images/surface.eps}
+
+$\text{RMSE}_e = \text{RMSE}_{\tilde{y}} -  \text{RMSE}_{y}$ 
+
+\includegraphics[height=0.65\textheight]{images/surface.eps}
 
 \end{frame}
 %------------------------------------------------
@@ -652,15 +695,15 @@ e_k & \approx -\frac{dy}{dt}\delta_k. \notag
 \begin{table}[!ht]
 	\small
 	\centering
-	\setlength{\tabcolsep}{12pt}
-	\renewcommand{\arraystretch}{2}
-	\begin{tabular}{S M}	
+	\setlength{\tabcolsep}{8pt}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{S M M}	
 		\toprule
-		Símbolo	& Definição \\
+		Símbolo	& Definição & Objetivo \\
 		\midrule
-		$\lambda$	& $h_k \sim \mathcal{E} (\lambda)$ \\ 
-		$\alpha$	& $\frac{1}{\lambda} \triangleq \alpha T$ \\
-		SNR			& $SNR_{\textrm{dB}} \triangleq 10 \log_{10}\frac{P_{\textrm{signal}}}{P_{\textrm{noise}}}$  \\		
+		$\lambda$	& $h_k \sim \mathcal{E} (\lambda)$ & Influência da \textbf{dinâmica} do sinal de saída \\ 
+		$\alpha$	& $\frac{1}{\lambda} \triangleq \alpha T$ & Influência da \textbf{relação} entre amostragens \\
+		SNR			& $SNR_{\textrm{dB}} \triangleq 10 \log_{10}\frac{P_{\textrm{signal}}}{P_{\textrm{noise}}}$ & Influência do \textbf{ruído} \\		
 		\bottomrule		
 	\end{tabular}
 	\label{tab:symbols}
@@ -675,84 +718,450 @@ e_k & \approx -\frac{dy}{dt}\delta_k. \notag
 %------------------------------------------------
 \begin{frame}
 \frametitle{Descrição do Sistema}
-
-(modelo matemático)
+Dois modos subamortecidos, um \color{blue}{passa-baixas} \color{black}e outro \color{red}{passa-altas}:
+%
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\begin{equation}
+	\color{blue}
+	G_{\textrm{lp}}(s) = \frac{100}{s^2 + 2s + 100} \notag
+	\end{equation}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\begin{equation}
+	\color{red}
+	G_{\textrm{hp}}(s) = \frac{s^2-0.001s}{s^2 + 200s + 10^6}\notag
+	\end{equation}
+\end{minipage}
+\vfill
+\centering
+\includegraphics[height=0.45\textheight]{images/bode.eps}
 
 \end{frame}
 %------------------------------------------------
 
 %------------------------------------------------
 \begin{frame}
+
 \frametitle{Descrição do Sistema}
 
-(imagens)
+\vspace{-0.75cm}
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\footnotesize
+\begin{align}
+\dot{x}(t) & = Ax(t) + Bu(t) \notag\\
+y(t) & = Cx(t) + Du(t) \notag
+\end{align}
+
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\tiny
+	\begin{equation}
+	A =\begin{bmatrix}
+	\color{blue}-100 & \color{blue}994.99 & 0 & 0\\
+	\color{blue}-994.99 & \color{blue}-100 & 0 & 0\\
+	0 & 0 & \color{red}-1 & \color{red}9.949\\
+	0 & 0 & \color{red}-9.949 & \color{red}-1
+	\end{bmatrix} \notag
+\end{equation}
+
+\end{minipage}
+\vspace{1cm}
+
+\centering
+Entrada: \\
+\vspace{0.5cm}
+\includegraphics[width=0.7\textwidth]{images/prbs.eps} \\
+
 
 \end{frame}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Resultados}
+\frametitle{Estimativas Para Uma realização}
+Estado do modo passa-alta:\\
 
-(Imagens)
+\begin{figure}
+	\adjustimage{width=.5\textwidth,center}{images/StatesWithTimeStamp.eps}
+\end{figure}
+
+Estado do modo passa-baixa:\\
+
+\begin{figure}
+	\adjustimage{width=.5\textwidth,center}{images/StatesWithoutTimeStamp.eps}
+\end{figure}
+
 
 \end{frame}
 %------------------------------------------------
-
 \begin{frame}
-\frametitle{Resultados}
+\frametitle{Resultados - Variação do Nível de Ruído do Sistema (SNR)}
 
-(Tabela)
+\begin{table}[!ht]
+	\centering
+	\tiny
+%	\setlength{\tabcolsep}{12pt}
+%	\renewcommand{\arraystretch}{1.5}
+
+	\begin{tabular}{c | c | c c | c c }
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
+		\midrule
+		\multirow{5}{*}{SNR (dB)} 	
+		& 10  	& $[2.7,\ \ 5.0]\times 10^{-4}$ 	& $[0.39,\ \ 0.97]$ 	& $[2.3,\ \ 3.8]\times 10^{-3}$ 	& $[0.52,\ \ 1.1]$ \\
+		& 20  	& $[5.0,\ \ 6.9]\times 10^{-4}$ 	& $[0.97,\ \ 1.6]$ 		& $[11,\ \ 14]\times 10^{-3}$ 		& $[1.6,\ \ 2.3]$ \\
+		& 40 	& $[7.4,\ \ 9.1]\times 10^{-4}$ 	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.3,\ \ 3.1]$ \\
+		& 50  	& $[8.8,\ \ 10]\times 10^{-4}$  	& $[1.9,\ \ 2.6]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.8,\ \ 3.7]$ \\
+		& 60  	& $[8.3,\ \ 10]\times 10^{-4}$  	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.6,\ \ 3.4]$ \\
+
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_noise_x1.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_noise_x4.pdf}}  
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_noise_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_noise_chiy.pdf}} 
+\end{figure}
+
 
 \end{frame}
 %------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Resultados - Variação da Frequência Média da Saída ($\lambda$)}
+
+\begin{table}[!ht]
+	\centering
+	\tiny
+	%	\setlength{\tabcolsep}{12pt}
+	%	\renewcommand{\arraystretch}{1.5}
+
+	\begin{tabular}{c | c | c c | c c }
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
+
+				\midrule
+				\multirow{4}{*}{$\lambda$ (kHz)} 	
+				& 0.1  	& $[4.6,\ \ 7.3]\times 10^{-4}$ 	& $[0.58,\ \ 1.2]$ 		& $[3.7,\ \ 4.4]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
+				& 0.3  	& $[6.5,\ \ 8.2]\times 10^{-4}$ 	& $[1.4,\ \ 2.0]$ 		& $[3.1,\ \ 3.7]\times 10^{-2}$ 	& $[2.1,\ \ 2.9]$ \\
+				& 0.5 	& $[6.1,\ \ 8.1]\times 10^{-4}$ 	& $[1.1,\ \ 1.7]$ 		& $[1.6,\ \ 1.9]\times 10^{-2}$ 	& $[2.3,\ \ 3.1]$ \\
+				& 1  	& $[2.1,\ \ 3.5]\times 10^{-4}$  	& $[0.46,\ \ 1.0]$ 		& $[0.66,\ \ 0.78]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
+
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_lambda_x1.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_lambda_x4.pdf}}  
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_lambda_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_lambda_chiy.pdf}} 
+\end{figure}
+
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Resultados - Variação da Relação Entre Frequências ($\alpha$)}
+
+\begin{table}[!ht]
+	\centering
+	\tiny
+	%	\setlength{\tabcolsep}{12pt}
+	%	\renewcommand{\arraystretch}{1.5}
+	\label{tab:results_linear}
+	\begin{tabular}{c | c | c c | c c }
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
+
+				
+				\midrule
+				\multirow{4}{*}{$\alpha$} 	
+				& 1  	& $[5.9,\ \ 7.8]\times 10^{-4}$ 	& $[1.1,\ \ 1.8]$ 		& $[15,\ \ 17]\times 10^{-3}$ 		& $[2.5,\ \ 3.2]$ \\
+				& 2  	& $[3.1,\ \ 4.2]\times 10^{-4}$ 	& $[0.96,\ \ 1.6]$ 		& $[8.9,\ \ 11]\times 10^{-3}$ 		& $[1.9,\ \ 2.6]$ \\
+				& 3 	& $[1.6,\ \ 2.5]\times 10^{-4}$ 	& $[0.56,\ \ 1.1]$ 		& $[5.6,\ \ 6.7]\times 10^{-3}$ 	& $[1.7,\ \ 2.4]$ \\
+				& 5  	& $[0.46,\ \ 1.5]\times 10^{-4}$  	& $[0.088,\ \ 0.65]$ 	& $[3.8,\ \ 4.9)\times 10^{-3}$ 	& $[1.3,\ \ 2.0]$ \\
+				
+				
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_alpha_x1.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_alpha_x4.pdf}}  
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_alpha_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.24\textwidth]{images/Rlinear_alpha_chiy.pdf}} 
+\end{figure}
+
+
+\end{frame}
+
 
 %------------------------------------------------SUBSECTION------------------------------
-
 \subsection{Sistema Não-Linear}
+\begin{frame}
+\frametitle{Descrição do sistema}
+Considere o sistema de um robô móvel não-holonômico:
+
+\begin{minipage}{.70\textwidth}
+	\begin{equation*}
+	\begin{split}
+	\dot{p}_{\textrm{x}} & = v\cos (\theta),\\
+	\dot{p}_{\textrm{y}} & = v\sin (\theta),\\
+	\dot{\theta}  & = u_1(t),\\
+	\dot{v} & = u_2(t),
+	\end{split}
+	\end{equation*}
+	
+	
+	em que:
+	
+	\vspace{0.2cm}
+	
+	\centering
+	
+	\begin{tabular}{l l}
+		\hfill
+		$p_{\textrm{x}}$ e $p_{\textrm{y}}$:	& coordenadas de posição, \\
+		\hfill
+		$\theta$:  							& orientação angular, \\
+		\hfill
+		$v$:								& velocidade linear, \\
+		\hfill
+		$u_1$:	 							& entrada: velocidade angular ($\omega$), \\
+		\hfill
+		$u_2$:	 							& entrada: aceleração linear ($a$)
+	\end{tabular}
+	
+\end{minipage}%
+\begin{minipage}{.3\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\textwidth]{images/Nonholomonic-robot.pdf}
+	\end{figure}
+\end{minipage}
+
+
+
+\end{frame}
 
 %------------------------------------------------
-\begin{frame}
-\frametitle{Descrição do Sistema}
 
-(modelo matemático)
+
+\begin{frame}
+\frametitle{Robô Móvel não-Holomônico}
+
+Vetor de estados:
+\begin{equation*}
+x_i \overset{\Delta}{=} [p_{\textrm{x},i}\ p_{\textrm{y},i}\ \theta_i\ v_i]^T.
+\end{equation*}
+
+\vspace{0.25cm}
+Modelo de observações:
+\begin{equation*}
+y(t_k) = 
+\begin{bmatrix}
+p_{\textrm{x}}(t_k) \\
+p_{\textrm{y}}(t_k)
+\end{bmatrix}+v(t_k), \  \ v(t_k) \sim \mathcal{N} (0,R_{t_k}).
+\end{equation*}
+
+
+\vspace{0.25cm}
+Vetor de entradas:
+\begin{equation*}
+u_i = [\omega_i\ a_i]^T,
+\end{equation*}
+\begin{equation*}
+u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
+\end{equation*}
+
 
 \end{frame}
 %------------------------------------------------
 
 %------------------------------------------------
 \begin{frame}
-\frametitle{Descrição do Sistema}
+\frametitle{Entradas e Realização Única}
 
-(imagens)
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\begin{figure}
+		\title{text}
+		\adjustimage{width=.5\textheight,center}{images/entradas1.eps}
+	\end{figure}
+	\begin{figure}
+				\title{text}
+		\adjustimage{width=.5\textheight,center}{images/entradas2.eps}
+	\end{figure}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+	\centering
+	\begin{center}
+		
+	\begin{figure}
+		\adjustimage{width=\textwidth,center}{images/exemplo_03_30db_desloc.eps}
+	\end{figure}
+	\end{center}
+\end{minipage}
 
 \end{frame}
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Resultados}
+\frametitle{Resultados - Variação do Nível de Ruído da Saída $\text{SNR}_{\text{obs}}$}
 
-(Imagens)
+\begin{table}[!htb]
+	\centering
+	\tiny
+		\begin{tabular}{c | c | c c}
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
+		\midrule
+		\multirow{5}{*}{SNR (dB)} 	
+		& 10  	& $[3.0,\ \ 3.4]$ 		& $[0.76,\ \ 0.94]$ \\
+		& 20  	& $[4.2,\ \ 4.8]$ 	 	& $[0.83,\ \ 1.0]$ \\
+		& 40 	& $[7.8,\ \ 8.7]$ 	 	& $[1.0,\ \ 1.2]$ \\
+		& 60  	& $[9.8	,\ \ 11]$  	 	& $[1.2,\ \ 1.4]$ \\
+		& 80  	& $[11,\ \ 13]$  	 	& $[1.2,\ \ 1.4]$ \\
+		& 100  	& $[16,\ \ 18]$  	 	& $[1.2,\ \ 1.3]$ \\
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_noise_rmse.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_noise_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_noise_chiy.pdf}} 
+\end{figure}
+
 
 \end{frame}
+%------------------------------------------------
+
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Resultados}
+\frametitle{Resultados - Variação da Frequência Média da Saída ($\lambda$)}
 
-(Tabela)
+\begin{table}[!htb]
+	\centering
+	\tiny
+	\begin{tabular}{c | c | c c}
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
+		\midrule
+		\multirow{4}{*}{$\lambda$ (kHz)} 	
+			& 1.67  & $[10,\ \ 12]$ 	 	& $[1.1,\ \ 1.3]$ \\
+			& 2  	& $[9.1,\ \ 10]$ 	 	& $[1.0,\ \ 1.2]$ \\
+			& 2.5 	& $[8.4,\ \ 9.7]$ 	 	& $[0.82,\ \ 1.0]$ \\
+			& 3.33  & $[6.9,\ \ 7.9]$  	 	& $[0.79,\ \ 0.97]$ \\
+			& 5  	& $[6.0,\ \ 6.9]$  	 	& $[0.78,\ \ 0.96]$ \\
+			& 10  	& $[7.7,\ \ 8.7]$  	 	& $[1.0,\ \ 1.2]$ \\
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_lambda_rmse.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_lambda_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_lambda_chiy.pdf}} 
+\end{figure}
+
 
 \end{frame}
 %------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Resultados - Variação da Relação Entre Frequências ($\alpha$)}
+
+\begin{table}[!htb]
+	\centering
+	\tiny
+	\begin{tabular}{c | c | c c}
+		\toprule
+		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{} 		    
+		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
+		\midrule
+		\multirow{4}{*}{$\alpha$} 	
+		& 1  	& $[6.2,\ \ 6.8]$  		& $[1.2,\ \ 1.4]$ \\
+		& 2  	& $[7.4,\ \ 8.3]$ 	 	& $[1.0,\ \ 1.2]$ \\
+		& 5 	& $[17,\ \ 18]$  		& $[1.3,\ \ 1.5]$ \\
+		& 10  	& $[33,\ \ 35]$   		& $[1.9,\ \ 2.1]$ \\
+		\bottomrule
+	\end{tabular}
+	
+\end{table}
+
+
+\begin{figure}[H]
+	\centering
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_alpha_rmse.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_alpha_chix.pdf}} 
+	\subfigure{\includegraphics[width=0.31\textwidth]{images/Rrobot_alpha_chiy.pdf}} 
+\end{figure}
+
+
+\end{frame}
+%------------------------------------------------
+
 
 %------------------------------------------------SUBSECTION------------------------------
 
-\subsection{Conclusões}
+\section{Conclusões}
 
 %------------------------------------------------
 \begin{frame}
 \frametitle{Principais Resultados e Contribuições}
 
-(texto)
+Cenários com \textbf{maior} influência no desempenho do estimador:
+\begin{itemize}
+	\item \textbf{Baixo ruído} nos sinais;
+	\item \textbf{Baixa frequência} média da amostragem irregular;
+	\item \textbf{Menor relação} entre a requência média da amostragem irregular e a frequência de estimação, \underline{quando SNR das observações é maior que o} \underline{do modelo de processo}.
+\end{itemize}
+
+\vspace{0.5cm}
+\begin{block}{}
+	\centering
+Abordagem útil para a tomada de decisão sobre investimento em sincronização e em capacidade computacional.
+\end{block}
+
 
 \end{frame}
 %------------------------------------------------
@@ -761,11 +1170,24 @@ e_k & \approx -\frac{dy}{dt}\delta_k. \notag
 \begin{frame}
 \frametitle{Trabalhos Futuros}
 
-(texto)
+\begin{enumerate}
+	\item Investigação sobre algoritmos que compensam o erro de deslocar instantes de tempo;
+	\item Desenvolvimento de rotinas de sintonia do estimador \textit{ad hoc}, aumentando o traço da matriz de covariância do modelo de observação, para estimativas mais consistentes;
+	\item Estudo dos efeitos de amostragem irregular com a introdução de atraso de tempo;
+	\item Utilização de outros métodos de filtragem, como o baseado em partículas, com potencial de ser mais robustos a ruídos não gaussianos;
+\end{enumerate}
 
 
 \end{frame}
 %------------------------------------------------
+
+\frame {
+	\center
+	\vspace{1cm}
+	\textbf{\Large OBRIGADO} \\
+	\vspace{1cm}
+	e-mail: tatatupi@gmail.com.br
+}
 
 %
 %\section{Problem Formulation}\label{sec:problem_form} 
