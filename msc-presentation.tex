@@ -699,12 +699,61 @@ e_k & \approx -\frac{dy}{dt}\delta_k.
 \end{frame}
 %------------------------------------------------
 
+\begin{frame}
+\frametitle{Diretamente proporcional à derivada do sinal}
+
+\includegraphics[width=\textwidth]{images/Gs_error_deriv60.eps}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Diretamente proporcional à derivada do sinal}
+
+\includegraphics[width=\textwidth]{images/Gs_error_deriv50.eps}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Diretamente proporcional à derivada do sinal}
+
+\includegraphics[width=\textwidth]{images/Gs_error_deriv40.eps}
+
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Erro introduzido pelos deslocamentos}
+\centering
+
+\begin{itemize}
+\item Sinal verdadeiro $\rightarrow$ $y(t)$
+\item Medições $\rightarrow$ $\hat{y}(t_k)$
+\item Medições deslocadas $\rightarrow$ $\tilde{y}(t^*_k) = \hat{y}(t_k+\delta_k) $
+\end{itemize}
+
+
+\pause
+\begin{align*}
+\text{RMSE}_{\hat{y}} & \triangleq \frac{\sum_{k=1}^{N} \sqrt{(\hat{y}(t_k) - y(t_k))}}{N} \\
+\text{RMSE}_{\tilde{y}} & \triangleq \frac{\sum_{k=1}^{N} \sqrt{(\tilde{y}(t^*_k) - y(t^*_k))}}{N} \\
+\end{align*}
+
+\pause
+\begin{block}{Contribuição dos deslocamentos para o RMSE total}
+\centering
+$\text{RMSE}_{e} \triangleq \text{RMSE}_{\tilde{y}} - \text{RMSE}_{\hat{y}}$
+
+\end{block}
+
+
+\end{frame}
+%------------------------------------------------
 
 \begin{frame}
 \frametitle{Em função do ruído e da frequência média de amostragem}
 \centering
 
-$\text{RMSE}_e = \text{RMSE}_{\tilde{y}} -  \text{RMSE}_{y}$ 
+$\text{RMSE}_{e} \triangleq \text{RMSE}_{\tilde{y}} - \text{RMSE}_{\hat{y}}$
 
 \includegraphics[height=0.65\textheight]{images/surface.eps}
 
@@ -833,9 +882,9 @@ Entrada: \\
 \begin{table}[!ht]
 	\centering
 	\tiny
-%	\setlength{\tabcolsep}{12pt}
-%	\renewcommand{\arraystretch}{1.5}
-
+	%	\setlength{\tabcolsep}{12pt}
+	%	\renewcommand{\arraystretch}{1.5}
+	
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
 		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
@@ -843,12 +892,12 @@ Entrada: \\
 		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
 		\midrule
 		\multirow{5}{*}{SNR (dB)} 	
-		& 60  	& $[8.3,\ \ 10]\times 10^{-4}$  	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.6,\ \ 3.4]$ \\
-		& 50  	& $[8.8,\ \ 10]\times 10^{-4}$  	& $[1.9,\ \ 2.6]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.8,\ \ 3.7]$ \\
-		& 40 	& $[7.4,\ \ 9.1]\times 10^{-4}$ 	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.3,\ \ 3.1]$ \\
-		& 20  	& $[5.0,\ \ 6.9]\times 10^{-4}$ 	& $[0.97,\ \ 1.6]$ 		& $[11,\ \ 14]\times 10^{-3}$ 		& $[1.6,\ \ 2.3]$ \\
-		& 10  	& $[2.7,\ \ 5.0]\times 10^{-4}$ 	& $[0.39,\ \ 0.97]$ 	& $[2.3,\ \ 3.8]\times 10^{-3}$ 	& $[0.52,\ \ 1.1]$ \\
-
+		& 60  	& \textbf{9.21} $[8.3,\ \ 10]\times 10^{-4}$  	& \textbf{1.98} $[1.6,\ \ 2.3]$ 		& \textbf{19.3} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{3.00} $[2.6,\ \ 3.4]$ \\
+		& 50  	& \textbf{9.70} $[8.8,\ \ 10]\times 10^{-4}$  	& \textbf{2.22} $[1.9,\ \ 2.6]$ 		& \textbf{19.3} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{3.25} $[2.8,\ \ 3.7]$ \\
+		& 40 	& \textbf{8.23} $[7.4,\ \ 9.1]\times 10^{-4}$ 	& \textbf{1.96} $[1.6,\ \ 2.3]$ 		& \textbf{19.6} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{2.72} $[2.3,\ \ 3.1]$ \\
+		& 20  	& \textbf{5.95} $[5.0,\ \ 6.9]\times 10^{-4}$ 	& \textbf{1.27 }$[0.97,\ \ 1.6]$ 	& \textbf{12.4} $[11,\ \ 14]\times 10^{-3}$ 		& \textbf{1.96} $[1.6,\ \ 2.3]$ \\
+		& 10  	& \textbf{3.87} $[2.7,\ \ 5.0]\times 10^{-4}$ 	& \textbf{0.680} $[0.39,\ \ 0.97]$ 	& \textbf{3.07} $[2.3,\ \ 3.8]\times 10^{-3}$ 	& \textbf{0.809} $[0.52,\ \ 1.1]$ \\
+		
 		\bottomrule
 	\end{tabular}
 	
@@ -882,11 +931,11 @@ Entrada: \\
 		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
 		\midrule
 		\multirow{5}{*}{SNR (dB)} 	
-		& 60  	& $[8.3,\ \ 10]\times 10^{-4}$  	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.6,\ \ 3.4]$ \\
-		& 50  	& $[8.8,\ \ 10]\times 10^{-4}$  	& $[1.9,\ \ 2.6]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.8,\ \ 3.7]$ \\
-		& 40 	& $[7.4,\ \ 9.1]\times 10^{-4}$ 	& $[1.6,\ \ 2.3]$ 		& $[18,\ \ 21]\times 10^{-3}$ 		& $[2.3,\ \ 3.1]$ \\
-		& 20  	& $[5.0,\ \ 6.9]\times 10^{-4}$ 	& $[0.97,\ \ 1.6]$ 		& $[11,\ \ 14]\times 10^{-3}$ 		& $[1.6,\ \ 2.3]$ \\
-		& 10  	& $[2.7,\ \ 5.0]\times 10^{-4}$ 	& $[0.39,\ \ 0.97]$ 	& $[2.3,\ \ 3.8]\times 10^{-3}$ 	& $[0.52,\ \ 1.1]$ \\
+		& 60  	& \textbf{9.21} $[8.3,\ \ 10]\times 10^{-4}$  	& \textbf{1.98} $[1.6,\ \ 2.3]$ 		& \textbf{19.3} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{3.00} $[2.6,\ \ 3.4]$ \\
+		& 50  	& \textbf{9.70} $[8.8,\ \ 10]\times 10^{-4}$  	& \textbf{2.22} $[1.9,\ \ 2.6]$ 		& \textbf{19.3} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{3.25} $[2.8,\ \ 3.7]$ \\
+		& 40 	& \textbf{8.23} $[7.4,\ \ 9.1]\times 10^{-4}$ 	& \textbf{1.96} $[1.6,\ \ 2.3]$ 		& \textbf{19.6} $[18,\ \ 21]\times 10^{-3}$ 		& \textbf{2.72} $[2.3,\ \ 3.1]$ \\
+		& 20  	& \textbf{5.95} $[5.0,\ \ 6.9]\times 10^{-4}$ 	& \textbf{1.27 }$[0.97,\ \ 1.6]$ 	& \textbf{12.4} $[11,\ \ 14]\times 10^{-3}$ 		& \textbf{1.96} $[1.6,\ \ 2.3]$ \\
+		& 10  	& \textbf{3.87} $[2.7,\ \ 5.0]\times 10^{-4}$ 	& \textbf{0.680} $[0.39,\ \ 0.97]$ 	& \textbf{3.07} $[2.3,\ \ 3.8]\times 10^{-3}$ 	& \textbf{0.809} $[0.52,\ \ 1.1]$ \\
 		
 		\bottomrule
 	\end{tabular}
@@ -922,10 +971,10 @@ Entrada: \\
 
 				\midrule
 				\multirow{4}{*}{$\lambda$ (kHz)} 	
-				& 0.1  	& $[4.6,\ \ 7.3]\times 10^{-4}$ 	& $[0.58,\ \ 1.2]$ 		& $[3.7,\ \ 4.4]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
-				& 0.3  	& $[6.5,\ \ 8.2]\times 10^{-4}$ 	& $[1.4,\ \ 2.0]$ 		& $[3.1,\ \ 3.7]\times 10^{-2}$ 	& $[2.1,\ \ 2.9]$ \\
-				& 0.5 	& $[6.1,\ \ 8.1]\times 10^{-4}$ 	& $[1.1,\ \ 1.7]$ 		& $[1.6,\ \ 1.9]\times 10^{-2}$ 	& $[2.3,\ \ 3.1]$ \\
-				& 1  	& $[2.1,\ \ 3.5]\times 10^{-4}$  	& $[0.46,\ \ 1.0]$ 		& $[0.66,\ \ 0.78]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
+				& 0.1  	& \textbf{5.97} $[4.6,\ \ 7.3]\times 10^{-4}$ 	& \textbf{0.869} $[0.58,\ \ 1.2]$ 		& \textbf{4.06} $[3.7,\ \ 4.4]\times 10^{-2}$ 		& \textbf{2.33}$[2.0,\ \ 2.7]$ \\
+				& 0.3  	& \textbf{7.40} $[6.5,\ \ 8.2]\times 10^{-4}$ 	& \textbf{1.69} $[1.4,\ \ 2.0]$ 		& \textbf{3.42} $[3.1,\ \ 3.7]\times 10^{-2}$ 		& \textbf{2.48} $[2.1,\ \ 2.9]$ \\
+				& 0.5 	& \textbf{7.08} $[6.1,\ \ 8.1]\times 10^{-4}$ 	& \textbf{1.39} $[1.1,\ \ 1.7]$ 		& \textbf{1.73} $[1.6,\ \ 1.9]\times 10^{-2}$ 		& \textbf{2.73} $[2.3,\ \ 3.1]$ \\
+				& 1  	& \textbf{2.80} $[2.1,\ \ 3.5]\times 10^{-4}$  	& \textbf{0.753} $[0.46,\ \ 1.0]$ 		& \textbf{0.720} $[0.66,\ \ 0.78]\times 10^{-2}$ 	& \textbf{2.34} $[2.0,\ \ 2.7]$ \\
 
 		\bottomrule
 	\end{tabular}
@@ -961,10 +1010,10 @@ Entrada: \\
 		
 		\midrule
 		\multirow{4}{*}{$\lambda$ (kHz)} 	
-		& 0.1  	& $[4.6,\ \ 7.3]\times 10^{-4}$ 	& $[0.58,\ \ 1.2]$ 		& $[3.7,\ \ 4.4]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
-		& 0.3  	& $[6.5,\ \ 8.2]\times 10^{-4}$ 	& $[1.4,\ \ 2.0]$ 		& $[3.1,\ \ 3.7]\times 10^{-2}$ 	& $[2.1,\ \ 2.9]$ \\
-		& 0.5 	& $[6.1,\ \ 8.1]\times 10^{-4}$ 	& $[1.1,\ \ 1.7]$ 		& $[1.6,\ \ 1.9]\times 10^{-2}$ 	& $[2.3,\ \ 3.1]$ \\
-		& 1  	& $[2.1,\ \ 3.5]\times 10^{-4}$  	& $[0.46,\ \ 1.0]$ 		& $[0.66,\ \ 0.78]\times 10^{-2}$ 	& $[2.0,\ \ 2.7]$ \\
+		& 0.1  	& \textbf{5.97} $[4.6,\ \ 7.3]\times 10^{-4}$ 	& \textbf{0.869} $[0.58,\ \ 1.2]$ 		& \textbf{4.06} $[3.7,\ \ 4.4]\times 10^{-2}$ 		& \textbf{2.33}$[2.0,\ \ 2.7]$ \\
+		& 0.3  	& \textbf{7.40} $[6.5,\ \ 8.2]\times 10^{-4}$ 	& \textbf{1.69} $[1.4,\ \ 2.0]$ 		& \textbf{3.42} $[3.1,\ \ 3.7]\times 10^{-2}$ 		& \textbf{2.48} $[2.1,\ \ 2.9]$ \\
+		& 0.5 	& \textbf{7.08} $[6.1,\ \ 8.1]\times 10^{-4}$ 	& \textbf{1.39} $[1.1,\ \ 1.7]$ 		& \textbf{1.73} $[1.6,\ \ 1.9]\times 10^{-2}$ 		& \textbf{2.73} $[2.3,\ \ 3.1]$ \\
+		& 1  	& \textbf{2.80} $[2.1,\ \ 3.5]\times 10^{-4}$  	& \textbf{0.753} $[0.46,\ \ 1.0]$ 		& \textbf{0.720} $[0.66,\ \ 0.78]\times 10^{-2}$ 	& \textbf{2.34} $[2.0,\ \ 2.7]$ \\
 		
 		\bottomrule
 	\end{tabular}
@@ -990,7 +1039,7 @@ Entrada: \\
 	\tiny
 	%	\setlength{\tabcolsep}{12pt}
 	%	\renewcommand{\arraystretch}{1.5}
-	\label{tab:results_linear}
+
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
 		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
@@ -1000,10 +1049,10 @@ Entrada: \\
 				
 				\midrule
 				\multirow{4}{*}{$\alpha$} 	
-				& 1  	& $[5.9,\ \ 7.8]\times 10^{-4}$ 	& $[1.1,\ \ 1.8]$ 		& $[15,\ \ 17]\times 10^{-3}$ 		& $[2.5,\ \ 3.2]$ \\
-				& 2  	& $[3.1,\ \ 4.2]\times 10^{-4}$ 	& $[0.96,\ \ 1.6]$ 		& $[8.9,\ \ 11]\times 10^{-3}$ 		& $[1.9,\ \ 2.6]$ \\
-				& 3 	& $[1.6,\ \ 2.5]\times 10^{-4}$ 	& $[0.56,\ \ 1.1]$ 		& $[5.6,\ \ 6.7]\times 10^{-3}$ 	& $[1.7,\ \ 2.4]$ \\
-				& 5  	& $[0.46,\ \ 1.5]\times 10^{-4}$  	& $[0.088,\ \ 0.65]$ 	& $[3.8,\ \ 4.9)\times 10^{-3}$ 	& $[1.3,\ \ 2.0]$ \\
+				& 1  	& \textbf{6.83} $[5.9,\ \ 7.8]\times 10^{-4}$ 		& \textbf{1.44} $[1.1,\ \ 1.8]$ 		& \textbf{15.7} $[15,\ \ 17]\times 10^{-3}$ 	& \textbf{2.85} $[2.5,\ \ 3.2]$ \\
+				& 2  	& \textbf{3.66} $[3.1,\ \ 4.2]\times 10^{-4}$ 		& \textbf{1.26} $[0.96,\ \ 1.6]$ 		& \textbf{9.75} $[8.9,\ \ 11]\times 10^{-3}$ 	& \textbf{2.25} $[1.9,\ \ 2.6]$ \\
+				& 3 	& \textbf{2.05} $[1.6,\ \ 2.5]\times 10^{-4}$ 		& \textbf{0.851} $[0.56,\ \ 1.1]$ 		& \textbf{6.14} $[5.6,\ \ 6.7]\times 10^{-3}$ 	& \textbf{2.02} $[1.7,\ \ 2.4]$ \\
+				& 5  	& \textbf{1.00} $[0.46,\ \ 1.5]\times 10^{-4}$  	& \textbf{0.369} $[0.088,\ \ 0.65]$ 	& \textbf{4.36} $[3.8,\ \ 4.9)\times 10^{-3}$ 	& \textbf{1.67} $[1.3,\ \ 2.0]$ \\
 				
 				
 		\bottomrule
@@ -1026,12 +1075,12 @@ Entrada: \\
 %------------------------------------------------
 \begin{frame}
 \frametitle{Resultados - Variação da Relação Entre Frequências ($\alpha$)}
-
 \begin{table}[!ht]
 	\centering
 	\tiny
 	%	\setlength{\tabcolsep}{12pt}
 	%	\renewcommand{\arraystretch}{1.5}
+
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
 		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
@@ -1041,16 +1090,17 @@ Entrada: \\
 		
 		\midrule
 		\multirow{4}{*}{$\alpha$} 	
-		& 1  	& $[5.9,\ \ 7.8]\times 10^{-4}$ 	& $[1.1,\ \ 1.8]$ 		& $[15,\ \ 17]\times 10^{-3}$ 		& $[2.5,\ \ 3.2]$ \\
-		& 2  	& $[3.1,\ \ 4.2]\times 10^{-4}$ 	& $[0.96,\ \ 1.6]$ 		& $[8.9,\ \ 11]\times 10^{-3}$ 		& $[1.9,\ \ 2.6]$ \\
-		& 3 	& $[1.6,\ \ 2.5]\times 10^{-4}$ 	& $[0.56,\ \ 1.1]$ 		& $[5.6,\ \ 6.7]\times 10^{-3}$ 	& $[1.7,\ \ 2.4]$ \\
-		& 5  	& $[0.46,\ \ 1.5]\times 10^{-4}$  	& $[0.088,\ \ 0.65]$ 	& $[3.8,\ \ 4.9)\times 10^{-3}$ 	& $[1.3,\ \ 2.0]$ \\
+		& 1  	& \textbf{6.83} $[5.9,\ \ 7.8]\times 10^{-4}$ 		& \textbf{1.44} $[1.1,\ \ 1.8]$ 		& \textbf{15.7} $[15,\ \ 17]\times 10^{-3}$ 	& \textbf{2.85} $[2.5,\ \ 3.2]$ \\
+		& 2  	& \textbf{3.66} $[3.1,\ \ 4.2]\times 10^{-4}$ 		& \textbf{1.26} $[0.96,\ \ 1.6]$ 		& \textbf{9.75} $[8.9,\ \ 11]\times 10^{-3}$ 	& \textbf{2.25} $[1.9,\ \ 2.6]$ \\
+		& 3 	& \textbf{2.05} $[1.6,\ \ 2.5]\times 10^{-4}$ 		& \textbf{0.851} $[0.56,\ \ 1.1]$ 		& \textbf{6.14} $[5.6,\ \ 6.7]\times 10^{-3}$ 	& \textbf{2.02} $[1.7,\ \ 2.4]$ \\
+		& 5  	& \textbf{1.00} $[0.46,\ \ 1.5]\times 10^{-4}$  	& \textbf{0.369} $[0.088,\ \ 0.65]$ 	& \textbf{4.36} $[3.8,\ \ 4.9)\times 10^{-3}$ 	& \textbf{1.67} $[1.3,\ \ 2.0]$ \\
 		
 		
 		\bottomrule
 	\end{tabular}
 	
 \end{table}
+
 
 
 \begin{figure}[H]
@@ -1187,12 +1237,12 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{5}{*}{SNR (dB)}
-		& 100  	& $[16,\ \ 18]$  	 	& $[1.2,\ \ 1.3]$ \\
-		& 80  	& $[11,\ \ 13]$  	 	& $[1.2,\ \ 1.4]$ \\
-		& 60  	& $[9.8	,\ \ 11]$  	 	& $[1.2,\ \ 1.4]$ \\
-		& 40 	& $[7.8,\ \ 8.7]$ 	 	& $[1.0,\ \ 1.2]$ \\
-		& 20  	& $[4.2,\ \ 4.8]$ 	 	& $[0.83,\ \ 1.0]$ \\
-		& 10  	& $[3.0,\ \ 3.4]$ 		& $[0.76,\ \ 0.94]$ \\
+		& 100  	& \textbf{16.}8 $[16,\ \ 18]$  	 		& \textbf{1.25} $[1.2,\ \ 1.3]$ \\
+		& 80  	& \textbf{12.0} $[11,\ \ 13]$  	 		& \textbf{1.31} $[1.2,\ \ 1.4]$ \\
+		& 60  	& \textbf{10.3} $[9.8,\ \ 11]$  	 	& \textbf{1.28} $[1.2,\ \ 1.4]$ \\
+		& 40 	& \textbf{8.30} $[7.8,\ \ 8.7]$ 	 	& \textbf{1.14} $[1.0,\ \ 1.2]$ \\
+		& 20  	& \textbf{4.54} $[4.2,\ \ 4.8]$ 	 	& \textbf{0.92} $[0.83,\ \ 1.0]$ \\
+		& 10  	& \textbf{3.20} $[3.0,\ \ 3.4]$ 		& \textbf{0.85} $[0.76,\ \ 0.94]$ \\
 
 		\bottomrule
 	\end{tabular}
@@ -1224,17 +1274,18 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{5}{*}{SNR (dB)}
-		& 100  	& $[16,\ \ 18]$  	 	& $[1.2,\ \ 1.3]$ \\
-		& 80  	& $[11,\ \ 13]$  	 	& $[1.2,\ \ 1.4]$ \\
-		& 60  	& $[9.8	,\ \ 11]$  	 	& $[1.2,\ \ 1.4]$ \\
-		& 40 	& $[7.8,\ \ 8.7]$ 	 	& $[1.0,\ \ 1.2]$ \\
-		& 20  	& $[4.2,\ \ 4.8]$ 	 	& $[0.83,\ \ 1.0]$ \\
-		& 10  	& $[3.0,\ \ 3.4]$ 		& $[0.76,\ \ 0.94]$ \\
+		& 100  	& \textbf{16.}8 $[16,\ \ 18]$  	 		& \textbf{1.25} $[1.2,\ \ 1.3]$ \\
+		& 80  	& \textbf{12.0} $[11,\ \ 13]$  	 		& \textbf{1.31} $[1.2,\ \ 1.4]$ \\
+		& 60  	& \textbf{10.3} $[9.8,\ \ 11]$  	 	& \textbf{1.28} $[1.2,\ \ 1.4]$ \\
+		& 40 	& \textbf{8.30} $[7.8,\ \ 8.7]$ 	 	& \textbf{1.14} $[1.0,\ \ 1.2]$ \\
+		& 20  	& \textbf{4.54} $[4.2,\ \ 4.8]$ 	 	& \textbf{0.92} $[0.83,\ \ 1.0]$ \\
+		& 10  	& \textbf{3.20} $[3.0,\ \ 3.4]$ 		& \textbf{0.85} $[0.76,\ \ 0.94]$ \\
 		
 		\bottomrule
 	\end{tabular}
 	
 \end{table}
+
 
 
 \begin{figure}[H]
@@ -1262,12 +1313,12 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{4}{*}{$\lambda$ (kHz)} 	
-			& 1.67  & $[10,\ \ 12]$ 	 	& $[1.1,\ \ 1.3]$ \\
-			& 2  	& $[9.1,\ \ 10]$ 	 	& $[1.0,\ \ 1.2]$ \\
-			& 2.5 	& $[8.4,\ \ 9.7]$ 	 	& $[0.82,\ \ 1.0]$ \\
-			& 3.33  & $[6.9,\ \ 7.9]$  	 	& $[0.79,\ \ 0.97]$ \\
-			& 5  	& $[6.0,\ \ 6.9]$  	 	& $[0.78,\ \ 0.96]$ \\
-			& 10  	& $[7.7,\ \ 8.7]$  	 	& $[1.0,\ \ 1.2]$ \\
+			& 1.67  & \textbf{11.1} $[10,\ \ 12]$ 	 		& \textbf{1.23} $[1.1,\ \ 1.3]$ \\
+			& 2  	& \textbf{9.63} $[9.1,\ \ 10]$ 	 		& \textbf{1.10} $[1.0,\ \ 1.2]$ \\
+			& 2.5 	& \textbf{9.07} $[8.4,\ \ 9.7]$ 	 	& \textbf{0.910} $[0.82,\ \ 1.0]$ \\
+			& 3.33  & \textbf{7.40} $[6.9,\ \ 7.9]$  	 	& \textbf{0.877} $[0.79,\ \ 0.97]$ \\
+			& 5  	& \textbf{6.42} $[6.0,\ \ 6.9]$  	 	& \textbf{0.865} $[0.78,\ \ 0.96]$ \\
+			& 10  	& \textbf{8.20} $[7.7,\ \ 8.7]$  	 	& \textbf{1.09} $[1.0,\ \ 1.2]$ \\
 		\bottomrule
 	\end{tabular}
 	
@@ -1299,16 +1350,17 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{4}{*}{$\lambda$ (kHz)} 	
-		& 1.67  & $[10,\ \ 12]$ 	 	& $[1.1,\ \ 1.3]$ \\
-		& 2  	& $[9.1,\ \ 10]$ 	 	& $[1.0,\ \ 1.2]$ \\
-		& 2.5 	& $[8.4,\ \ 9.7]$ 	 	& $[0.82,\ \ 1.0]$ \\
-		& 3.33  & $[6.9,\ \ 7.9]$  	 	& $[0.79,\ \ 0.97]$ \\
-		& 5  	& $[6.0,\ \ 6.9]$  	 	& $[0.78,\ \ 0.96]$ \\
-		& 10  	& $[7.7,\ \ 8.7]$  	 	& $[1.0,\ \ 1.2]$ \\
+		& 1.67  & \textbf{11.1} $[10,\ \ 12]$ 	 		& \textbf{1.23} $[1.1,\ \ 1.3]$ \\
+		& 2  	& \textbf{9.63} $[9.1,\ \ 10]$ 	 		& \textbf{1.10} $[1.0,\ \ 1.2]$ \\
+		& 2.5 	& \textbf{9.07} $[8.4,\ \ 9.7]$ 	 	& \textbf{0.910} $[0.82,\ \ 1.0]$ \\
+		& 3.33  & \textbf{7.40} $[6.9,\ \ 7.9]$  	 	& \textbf{0.877} $[0.79,\ \ 0.97]$ \\
+		& 5  	& \textbf{6.42} $[6.0,\ \ 6.9]$  	 	& \textbf{0.865} $[0.78,\ \ 0.96]$ \\
+		& 10  	& \textbf{8.20} $[7.7,\ \ 8.7]$  	 	& \textbf{1.09} $[1.0,\ \ 1.2]$ \\
 		\bottomrule
 	\end{tabular}
 	
 \end{table}
+
 
 
 \begin{figure}[H]
@@ -1339,10 +1391,10 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{4}{*}{$\alpha$} 	
-		& 1  	& $[6.2,\ \ 6.8]$  		& $[1.2,\ \ 1.4]$ \\
-		& 2  	& $[7.4,\ \ 8.3]$ 	 	& $[1.0,\ \ 1.2]$ \\
-		& 5 	& $[17,\ \ 18]$  		& $[1.3,\ \ 1.5]$ \\
-		& 10  	& $[33,\ \ 35]$   		& $[1.9,\ \ 2.1]$ \\
+		& 1  	& \textbf{6.51} $[6.2,\ \ 6.8]$ & \textbf{1.28} $[1.2,\ \ 1.4]$ \\
+		& 2  	& \textbf{7.86} $[7.4,\ \ 8.3]$ & \textbf{1.07} $[1.0,\ \ 1.2]$ \\
+		& 5 	& \textbf{17.3} $[17,\ \ 18]$  	& \textbf{1.42} $[1.3,\ \ 1.5]$ \\
+		& 10  	& \textbf{34.4} $[33,\ \ 35]$   & \textbf{2.01} $[1.9,\ \ 2.1]$ \\
 		\bottomrule
 	\end{tabular}
 	
@@ -1373,14 +1425,16 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
 		\multirow{4}{*}{$\alpha$} 	
-		& 1  	& $[6.2,\ \ 6.8]$  		& $[1.2,\ \ 1.4]$ \\
-		& 2  	& $[7.4,\ \ 8.3]$ 	 	& $[1.0,\ \ 1.2]$ \\
-		& 5 	& $[17,\ \ 18]$  		& $[1.3,\ \ 1.5]$ \\
-		& 10  	& $[33,\ \ 35]$   		& $[1.9,\ \ 2.1]$ \\
+		& 1  	& \textbf{6.51} $[6.2,\ \ 6.8]$ & \textbf{1.28} $[1.2,\ \ 1.4]$ \\
+		& 2  	& \textbf{7.86} $[7.4,\ \ 8.3]$ & \textbf{1.07} $[1.0,\ \ 1.2]$ \\
+		& 5 	& \textbf{17.3} $[17,\ \ 18]$  	& \textbf{1.42} $[1.3,\ \ 1.5]$ \\
+		& 10  	& \textbf{34.4} $[33,\ \ 35]$   & \textbf{2.01} $[1.9,\ \ 2.1]$ \\
 		\bottomrule
 	\end{tabular}
 	
 \end{table}
+
+
 
 
 \begin{figure}[H]

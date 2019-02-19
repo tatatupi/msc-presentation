@@ -75,69 +75,77 @@
 \headcommand {\beamer@framepages {34}{34}}
 \headcommand {\slideentry {3}{1}{4}{35/35}{An\'alise do Erro}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\beamer@subsectionpages {32}{35}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{36}{Cen\'arios de Simula\c c\~ao}}
-\headcommand {\slideentry {3}{2}{1}{36/36}{Cen\'arios de Simula\c c\~ao}{0}}
+\headcommand {\slideentry {3}{1}{5}{36/36}{An\'alise do Erro}{0}}
 \headcommand {\beamer@framepages {36}{36}}
-\headcommand {\slideentry {3}{2}{2}{37/37}{Cen\'arios de Simula\c c\~ao}{0}}
+\headcommand {\slideentry {3}{1}{6}{37/37}{An\'alise do Erro}{0}}
 \headcommand {\beamer@framepages {37}{37}}
-\headcommand {\beamer@subsectionpages {36}{37}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{38}{Sistema Linear}}
-\headcommand {\slideentry {3}{3}{1}{38/38}{Sistema Linear}{0}}
-\headcommand {\beamer@framepages {38}{38}}
-\headcommand {\slideentry {3}{3}{2}{39/39}{Sistema Linear}{0}}
-\headcommand {\beamer@framepages {39}{39}}
-\headcommand {\slideentry {3}{3}{3}{40/40}{Sistema Linear}{0}}
-\headcommand {\beamer@framepages {40}{40}}
-\headcommand {\slideentry {3}{3}{4}{41/41}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{1}{7}{38/40}{An\'alise do Erro}{0}}
+\headcommand {\beamer@framepages {38}{40}}
+\headcommand {\slideentry {3}{1}{8}{41/41}{An\'alise do Erro}{0}}
 \headcommand {\beamer@framepages {41}{41}}
-\headcommand {\slideentry {3}{3}{5}{42/42}{Sistema Linear}{0}}
+\headcommand {\beamer@subsectionpages {32}{41}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{42}{Cen\'arios de Simula\c c\~ao}}
+\headcommand {\slideentry {3}{2}{1}{42/42}{Cen\'arios de Simula\c c\~ao}{0}}
 \headcommand {\beamer@framepages {42}{42}}
-\headcommand {\slideentry {3}{3}{6}{43/43}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{2}{2}{43/43}{Cen\'arios de Simula\c c\~ao}{0}}
 \headcommand {\beamer@framepages {43}{43}}
-\headcommand {\slideentry {3}{3}{7}{44/44}{Sistema Linear}{0}}
+\headcommand {\beamer@subsectionpages {42}{43}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{44}{Sistema Linear}}
+\headcommand {\slideentry {3}{3}{1}{44/44}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {44}{44}}
-\headcommand {\slideentry {3}{3}{8}{45/45}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{3}{2}{45/45}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\slideentry {3}{3}{9}{46/46}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{3}{3}{46/46}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {46}{46}}
-\headcommand {\slideentry {3}{3}{10}{47/47}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{3}{4}{47/47}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {47}{47}}
-\headcommand {\slideentry {3}{3}{11}{48/48}{Sistema Linear}{0}}
+\headcommand {\slideentry {3}{3}{5}{48/48}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {48}{48}}
-\headcommand {\beamer@subsectionpages {38}{48}}
-\headcommand {\beamer@subsectionentry {0}{3}{4}{49}{Sistema N\~ao-Linear}}
-\headcommand {\slideentry {3}{4}{1}{49/49}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{6}{49/49}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {49}{49}}
-\headcommand {\slideentry {3}{4}{2}{50/50}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{7}{50/50}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {3}{4}{3}{51/51}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{8}{51/51}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {51}{51}}
-\headcommand {\slideentry {3}{4}{4}{52/52}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{9}{52/52}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {52}{52}}
-\headcommand {\slideentry {3}{4}{5}{53/53}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{10}{53/53}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {53}{53}}
-\headcommand {\slideentry {3}{4}{6}{54/54}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{3}{11}{54/54}{Sistema Linear}{0}}
 \headcommand {\beamer@framepages {54}{54}}
-\headcommand {\slideentry {3}{4}{7}{55/55}{Sistema N\~ao-Linear}{0}}
+\headcommand {\beamer@subsectionpages {44}{54}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{55}{Sistema N\~ao-Linear}}
+\headcommand {\slideentry {3}{4}{1}{55/55}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {55}{55}}
-\headcommand {\slideentry {3}{4}{8}{56/56}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{4}{2}{56/56}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {56}{56}}
-\headcommand {\slideentry {3}{4}{9}{57/57}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{4}{3}{57/57}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {57}{57}}
-\headcommand {\slideentry {3}{4}{10}{58/58}{Sistema N\~ao-Linear}{0}}
+\headcommand {\slideentry {3}{4}{4}{58/58}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {58}{58}}
-\headcommand {\beamer@sectionpages {32}{58}}
-\headcommand {\beamer@subsectionpages {49}{58}}
-\headcommand {\sectionentry {4}{Conclus\~oes}{59}{Conclus\~oes}{0}}
-\headcommand {\slideentry {4}{0}{1}{59/59}{}{0}}
+\headcommand {\slideentry {3}{4}{5}{59/59}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {59}{59}}
-\headcommand {\slideentry {4}{0}{2}{60/63}{}{0}}
-\headcommand {\beamer@framepages {60}{63}}
-\headcommand {\slideentry {4}{0}{3}{64/64}{}{0}}
+\headcommand {\slideentry {3}{4}{6}{60/60}{Sistema N\~ao-Linear}{0}}
+\headcommand {\beamer@framepages {60}{60}}
+\headcommand {\slideentry {3}{4}{7}{61/61}{Sistema N\~ao-Linear}{0}}
+\headcommand {\beamer@framepages {61}{61}}
+\headcommand {\slideentry {3}{4}{8}{62/62}{Sistema N\~ao-Linear}{0}}
+\headcommand {\beamer@framepages {62}{62}}
+\headcommand {\slideentry {3}{4}{9}{63/63}{Sistema N\~ao-Linear}{0}}
+\headcommand {\beamer@framepages {63}{63}}
+\headcommand {\slideentry {3}{4}{10}{64/64}{Sistema N\~ao-Linear}{0}}
 \headcommand {\beamer@framepages {64}{64}}
-\headcommand {\beamer@partpages {1}{64}}
-\headcommand {\beamer@subsectionpages {59}{64}}
-\headcommand {\beamer@sectionpages {59}{64}}
-\headcommand {\beamer@documentpages {64}}
-\headcommand {\gdef \inserttotalframenumber {43}}
+\headcommand {\beamer@sectionpages {32}{64}}
+\headcommand {\beamer@subsectionpages {55}{64}}
+\headcommand {\sectionentry {4}{Conclus\~oes}{65}{Conclus\~oes}{0}}
+\headcommand {\slideentry {4}{0}{1}{65/65}{}{0}}
+\headcommand {\beamer@framepages {65}{65}}
+\headcommand {\slideentry {4}{0}{2}{66/69}{}{0}}
+\headcommand {\beamer@framepages {66}{69}}
+\headcommand {\slideentry {4}{0}{3}{70/70}{}{0}}
+\headcommand {\beamer@framepages {70}{70}}
+\headcommand {\beamer@partpages {1}{70}}
+\headcommand {\beamer@subsectionpages {65}{70}}
+\headcommand {\beamer@sectionpages {65}{70}}
+\headcommand {\beamer@documentpages {70}}
+\headcommand {\gdef \inserttotalframenumber {47}}
