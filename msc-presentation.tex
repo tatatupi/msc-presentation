@@ -211,22 +211,21 @@
 
 \begin{frame}
 \frametitle{Crescimento do Mercado Global de Sensores}
-
+\vspace{-0.6cm}
 \begin{itemize}
-	\item CAGR de 11.3\% a.a. no período 2016-2022 
+	\item Taxa Composta Anual de Crescimento de 11.3\% a.a., de 2016-2022 
 	\item USD 241 bilhões em 2022
 \end{itemize}
 
 \centering
-
+\vspace{0.2cm}
 \begin{minipage}[t]{0.49\linewidth}
 	\centering
 
 	\par
-	\vspace{0.5cm}
 	\centering
 	%\caption{}t
-	\includegraphics[width=1\textwidth]{images/impact_factors.png}
+	\includegraphics[width=0.8\textheight]{images/impact_factors.png}
 
 	\par
 	\vspace{0.1cm}
@@ -236,12 +235,13 @@
 	\centering
 
 	\par
-	\vspace{0.5cm}
+
 	\centering
 	%\caption{}t
-	\includegraphics[width=0.75\textwidth]{images/sensores.PNG}
+	\includegraphics[width=0.8\textwidth]{images/sensores.PNG}
 
 	\par
+		\vspace{0.1cm}
 	\tiny Fonte: Postscape, 2015
 \end{minipage}
 
@@ -267,7 +267,7 @@
 	\vspace{0.5cm}
 	\centering
 	%\caption{}t
-	\includegraphics[width=0.8\textwidth]{images/IoT.png}
+	\includegraphics[width=0.9\textwidth]{images/IoT.png}
 	\vspace{0.4cm}
 	\par
 	\tiny Fonte: Business Insider
@@ -279,7 +279,7 @@
 	\vspace{0.5cm}
 	\centering
 	%\caption{}t
-	\includegraphics[width=0.85\textwidth]{images/wsn.png}
+	\includegraphics[width=1\textwidth]{images/wsn.png}
 	\vspace{0.8cm}
 	\par
 	\tiny Fonte: Libelium
@@ -288,25 +288,49 @@
 \end{frame}
 
 %------------------------------------------------
+
+\begin{frame}
+\frametitle{Exemplo de Aplicação: Reconhecimento de Atividades Humanas}
+\centering
+\includegraphics[width=0.9\textwidth]{images/har.pdf}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Exemplo de Aplicação: Rastreamento de um Robô}
+
+\hspace{0.9cm}
+\includegraphics[width=1\textheight]{images/robot_ex.pdf}
+
+\end{frame}
+
 %------------------------------------------------SUBSECTION------------------------------
 
 \begin{frame}
 \frametitle{Desafios}
 
-Aplicações de fusão sensorial clássicas consideram que as informações são \textbf{recebidas de forma regular}.  Caso não sejam, é possível adaptar os algoritmos considerando os \textbf{carimbos de tempo correta.} 
+Aplicações de fusão sensorial clássicas assumem que:
+
+\begin{itemize}
+	\item Informações são \textbf{recebidas de forma regular}
+	\item Medições possuem \textbf{carimbo de tempo} correta
+\end{itemize}
 
 \vspace{0.5cm}
+\pause
 \begin{block}{}
 	Falta de sincronização entre os múltiplos sensores da rede pode levar a \textbf{amostragem irregular} sem informação confiável de \textbf{carimbo de tempo}
 \end{block}
 
 \vspace{0.5cm}
-
-\textbf{Soluções}:
+\pause
+\textbf{Possíveis soluções}:
 
 \begin{itemize}
-	\item Investir em sincronização e em capacidade computacional
-	\item Deslocar os instantes de tempo
+	\item<3-> Investir em sincronização e em capacidade computacional
+	\item<4-> Deslocar os instantes de tempo
 \end{itemize}
 
 \end{frame}
@@ -334,9 +358,13 @@ Aplicações de fusão sensorial clássicas consideram que as informações são \textb
 
 \begin{frame}
 \frametitle{Efeitos de se deslocar os instantes de tempo}
-Evolução do erro de estimação de um estado, para estimadores que consideram o carimbo de tempo (\color{red}vermelho\color{black}) e não consideram (\color{blue}azul\color{black})
+Erro de estimação, com carimbo de tempo (\color{red}vermelho\color{black}) e sem (\color{blue}azul\color{black})
 \vfill
-
+\footnotesize
+\begin{itemize}
+	\item[$\rightarrow$] Linha tracejada com asterisco: instantes de tempo com medições
+	\item[$\rightarrow$] Círculos pretos: instantes regulares de estimação
+\end{itemize} 
 \centering
 \includegraphics[width=0.75\textheight]{images/LinearJEvolution.eps}
 
@@ -354,9 +382,11 @@ Evolução do erro de estimação de um estado, para estimadores que consideram o ca
 
 \vfill
 
+\pause
 \begin{block}{}
 \centering
-Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistemas amostrados \textit{aperiodicamente}
+\textbf{Fusão sensorial} $\rightarrow$ estimação de estados de sistemas amostrados \\
+\textbf{Amostragem irregular} $\rightarrow$ amostragem aperiódica
 \end{block}
 
 
@@ -371,10 +401,10 @@ Fusão sensorial resumido ao problema de \textit{estimação de estados} de sistema
 
 
 \begin{enumerate}
-	\item Revisar os métodos de \textbf{fusão sensorial} e o problema de \textbf{amostragem irregular};
-	\item Discutir os algoritmos e suas \textbf{adaptaçãos} ao modelo de amostragem aperiódica;
-	\item Desenvolver uma \textbf{metodologia} para estudar os efeitos de desconsiderar os carimbos de tempo;
-	\item Aplicar a metodologia em um sistema linear e outro não-linear, utilizando testes numéricos para \textbf{avaliar precisão e consistência} das estimativas;
+	\item<1-> Revisar os métodos de \textbf{fusão sensorial} e o problema de \textbf{amostragem irregular};
+	\item<2-> Discutir os algoritmos e suas \textbf{adaptações} ao modelo de amostragem aperiódica;
+	\item<3-> Desenvolver uma \textbf{metodologia} para estudar os efeitos de desconsiderar os carimbos de tempo;
+	\item<4-> Aplicar a metodologia em um sistema linear e outro não-linear, utilizando testes numéricos para \textbf{avaliar precisão e consistência} das estimativas;
 \end{enumerate}
 
 \end{frame}
@@ -420,18 +450,8 @@ $\lambda \rightarrow$ frequência média de amostragem
 \begin{frame}
 \frametitle{Estimação de Estados}
 \centering
-\textbf{Etapa de predição:}
-\vspace{0.3cm}
-\begin{equation}
-\rho(x_{k}|(y_1,...,y_{k-1})) = \int_{\mathbb{R}^n}\rho(x_k|x_{k-1}) \rho(x_{k-1}|y_1,...,y_{k-1})dx_{k-1} \notag 
-\end{equation}
-\vspace{1cm}
+\includegraphics[width=0.9\textwidth]{images/estimacao.PNG}
 
-\textbf{Etapa de assimilação de dados:}
-\vspace{0.3cm}
-\begin{equation}
-\rho(x_k|(y_1,...,y_k)) = \frac{\rho(y_k|x_k) \rho(x_k | (y_1,...,y_{k-1}))}{\rho(y_k|(y_1,...,y_{k-1}))} \notag
-\end{equation}
 \end{frame}
 
 
@@ -496,6 +516,7 @@ Queremos estimar o vetor de estados $x(iT)$ e sua covariância de forma recursiva
 	\item Entrada $u(t)$ é atualizada em intervalos de tempo constantes $T$:
 	\begin{itemize}
 		\item[$\rightarrow$] $u(t) = u(iT), \text{ para } iT \leq t < (i+1)T$
+		\item[$\rightarrow$] $i = 0, \ 1, \ 2, ... \in \mathbb{N}$
 	\end{itemize} 
 \end{itemize}
 
@@ -653,13 +674,19 @@ Queremos estimar o vetor de estados $x(iT)$ e sua covariância de forma recursiva
 %------------------------------------------------
 \begin{frame}
 \frametitle{Diretamente proporcional à derivada do sinal}
-Para um modelo de medição linear e \textbf{$\delta_k = nT - t_k$},
-\begin{align}
-e_k &= C[x(t_k)-x(t_k + \delta_k)], \notag \\
-e_k & = C\left(\frac{[x(t_k)-x(t_k + \delta_k)]}{\delta_k}\right)\delta_k, \notag \\
-e_k & \approx -C\frac{dx}{dt}\delta_k, \notag \\
-e_k & \approx -\frac{dy}{dt}\delta_k. \notag 
-\end{align}
+
+\begin{itemize}
+\item Modelo de medição $\rightarrow$ $y(t_k) = g(x(t_k),v(t_k),t_k)$\\
+\item Deslocamento de tempo $\rightarrow$ \textbf{$\delta_k \triangleq nT - t_k$},
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{align*}
+e_k &= g(t_k) - g(t_k + d_k),  \\
+e_k & = \left[ \frac{g(t_k) - g(t_k + d_k)}{\delta_k} \right] \delta_k  \\
+e_k & \approx -\frac{dy}{dt}\delta_k.  
+\end{align*}
 %\delta_k &= nT - t_k \notag \\
 \end{frame}
 %------------------------------------------------
@@ -696,14 +723,14 @@ $\text{RMSE}_e = \text{RMSE}_{\tilde{y}} -  \text{RMSE}_{y}$
 	\small
 	\centering
 	\setlength{\tabcolsep}{8pt}
-	\renewcommand{\arraystretch}{1.3}
+	\renewcommand{\arraystretch}{1.75}
 	\begin{tabular}{S M M}	
 		\toprule
 		Símbolo	& Definição & Objetivo \\
 		\midrule
-		$\lambda$	& $h_k \sim \mathcal{E} (\lambda)$ & Influência da \textbf{dinâmica} do sinal de saída \\ 
-		$\alpha$	& $\frac{1}{\lambda} \triangleq \alpha T$ & Influência da \textbf{relação} entre amostragens \\
-		SNR			& $SNR_{\textrm{dB}} \triangleq 10 \log_{10}\frac{P_{\textrm{signal}}}{P_{\textrm{noise}}}$ & Influência do \textbf{ruído} \\		
+		$\lambda$	& $h_k \sim \mathcal{E} (\lambda)$ & Influência da \textbf{taxa de amostragem} média da saída \\ 
+		$\alpha$	& $\frac{1}{\lambda} \triangleq \alpha T$ & Influência da \textbf{relação} entre as amostragens da saída e da entrada\\
+		SNR			& $SNR_{\textrm{dB}} \triangleq 10 \log_{10}\frac{P_{\textrm{signal}}}{P_{\textrm{noise}}}$ & Influência do nível de \textbf{ruído} no sistema\\		
 		\bottomrule		
 	\end{tabular}
 	\label{tab:symbols}
@@ -781,17 +808,20 @@ Entrada: \\
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{Estimativas para uma Realização}
-Estado do modo passa-alta:\\
+\frametitle{Estimativas para uma Realização: modo passa-alta}
 
 \begin{figure}
-	\adjustimage{width=.5\textwidth,center}{images/StatesWithTimeStamp.eps}
+	\adjustimage{width=0.9\textwidth,center}{images/StatesWithTimeStamp.eps}
 \end{figure}
 
-Estado do modo passa-baixa:\\
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Estimativas para uma Realização: modo passa-baixa}
 
 \begin{figure}
-	\adjustimage{width=.5\textwidth,center}{images/StatesWithoutTimeStamp.eps}
+	\adjustimage{width=0.9\textwidth,center}{images/StatesWithoutTimeStamp.eps}
 \end{figure}
 
 
@@ -808,7 +838,7 @@ Estado do modo passa-baixa:\\
 
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
 		\midrule
@@ -849,7 +879,7 @@ Estado do modo passa-baixa:\\
 
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
 
@@ -888,7 +918,7 @@ Estado do modo passa-baixa:\\
 	\label{tab:results_linear}
 	\begin{tabular}{c | c | c c | c c }
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{State 1 (RMSE difference)} 	& \multicolumn{2}{c}{State 4 (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Estado 1 (diferença RMSE)} 	& \multicolumn{2}{c}{Estado 4 (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$  				&  Cohen's \textit{d}  	& $\mu_{\textrm{D}}$      			& Cohen's \textit{d} \\
 
@@ -971,7 +1001,7 @@ Considere o sistema de um robô móvel não-holonômico:
 
 
 \begin{frame}
-\frametitle{Robô Móvel não-Holomônico}
+\frametitle{Robô Móvel não-Holonômico}
 
 Vetor de estados:
 \begin{equation*}
@@ -1038,7 +1068,7 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 	\tiny
 		\begin{tabular}{c | c | c c}
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Position (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
@@ -1076,7 +1106,7 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 	\tiny
 	\begin{tabular}{c | c | c c}
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Position (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
@@ -1114,7 +1144,7 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 	\tiny
 	\begin{tabular}{c | c | c c}
 		\toprule
-		\multicolumn{2}{c}{Scenarios}	& \multicolumn{2}{c}{Position (RMSE difference)} \\
+		\multicolumn{2}{c}{Cenários}	& \multicolumn{2}{c}{Posição (diferença RMSE)} \\
 		\multicolumn{2}{c}{} 		    
 		& $\mu_{\textrm{D}}$ (cm)	&  Cohen's \textit{d}  \\
 		\midrule
@@ -1151,9 +1181,9 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 
 Cenários com \textbf{maior} influência no desempenho do estimador:
 \begin{itemize}
-	\item \textbf{Baixo ruído} nos sinais;
+	\item \textbf{Baixo nível de ruído} nos sinais;
 	\item \textbf{Baixa frequência} média da amostragem irregular;
-	\item \textbf{Menor relação} entre a requência média da amostragem irregular e a frequência de estimação, \underline{quando SNR das observações é maior que o} \underline{do modelo de processo}.
+	\item \textbf{Menor relação} entre a frequência média da amostragem irregular e a frequência de estimação, \underline{quando SNR das observações é maior que o} \underline{do modelo de processo}.
 \end{itemize}
 
 \vspace{0.5cm}
@@ -1171,10 +1201,10 @@ Abordagem útil para a tomada de decisão sobre investimento em sincronização e em
 \frametitle{Trabalhos Futuros}
 
 \begin{enumerate}
-	\item Investigação sobre algoritmos que \textbf{compensam o erro} de deslocar instantes de tempo;
-	\item Desenvolvimento de \textbf{rotinas de sintonia} do estimador \textit{ad hoc}, aumentando o traço da matriz de covariância do modelo de observação, para estimativas mais consistentes;
-	\item Estudo dos efeitos de amostragem irregular com a \textbf{introdução de atraso de tempo};
-	\item Utilização de outros métodos de filtragem, como o \textbf{baseado em partículas}, com potencial de ser mais robustos a ruídos não gaussianos;
+	\item<1-> Investigação sobre algoritmos que \textbf{compensam o erro} de deslocar instantes de tempo;
+	\item<2-> Desenvolvimento de \textbf{rotinas de sintonia} do estimador \textit{ad hoc}, com \textbf{filtragem adaptativa};
+	\item<3-> Estudo dos efeitos de amostragem irregular com a \textbf{introdução de atraso de tempo};
+	\item<4-> Utilização de outros métodos de filtragem, como o \textbf{baseado em partículas}, com potencial de ser mais robustos a ruídos não gaussianos;
 \end{enumerate}
 
 
