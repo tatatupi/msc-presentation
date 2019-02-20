@@ -1,0 +1,171 @@
+
+Sumário:
+Vamos começar com uma breve discussão sobre as motivações que deram origem ao trabalho e as principais perguntas que ele pretende responder.
+Em seguida, apresentamos a metodologia, com o modelo de amostragem irregular utilizado e a aplicação de fusão sensorial escolhida, com as devidas adaptações necessários.
+Depois passamos para simulações numéricas para estudarmos os efeitos de certas aproximações em aplicaçõe de estimação de estado com amostragem irregular.
+
+
+
+Slide 1:
+Estamos passando por um momento em que a tecnologia tem ficado cada vez mais barata e acessível. Um dos mercados que se beneficia disso é, sem dúvida, o de sensores. 
+Em estudo de 2016, previa-se que o crescimento médio do mercado seria de mais de 11% ao ano, superando em muito as projeções de PIB global, por exemplo. A estimativa é de que em 2022, o mercado ainja 240 bilhões de dólares.
+Nessa figura do Allied Market Research, observamos que os principais motores para o crescimento atual são Internet das Coisas e a indústria de automação. Nesses mercados, os principais tipos de sensores são ilustrados na figura da direita, com medições de grandezas elétricas,de nível, de aceleração, vazão, etc.
+
+
+Slide 2:
+
+Essas tendêcias, de internet das coisas e de demandas para automação, exigem redes de sesnores cada vez mais complexas, utilizando redes sem fio, ou ransmissões por protocolos de internet. Muitas vezes, as informações coletadas pelos sensores e transmitidas por esses meios precisam ser fundidas, pois estão observando e coletando dados de um sistema comum, que precisa ser analisado ou controlado.
+
+
+Slide 3:
+
+Nesse cenário, temos alguns desafios que se tornam cada vez mais relevantes. Isso porque aplicações clássicas de fusão sensorial consideram que as informações são recebidas regularmente. Caso não seja, espera-se que o sistema de fusão tenha conhecimento do carimbo de tempo correto, que é o instante em que as medições foram coletadas.
+
+Acontece que para redes com grande número de sensores, sem a devida sincronização entre os nós dessa rede, pode levar a amostragem irregular, sem informação confiável de carimbo de tempo.
+
+Para isso, existem duas soluções: blablabla
+
+
+Slide 4:
+Para exemplificar o que significa essa falta de sincronização sem o conhecimento de carimbo de tempo, imagine um sinal contínuo, como o em azul, sendo amostrado por uma rede de sensores. As medições são feitas no instantes destacados pela bolas pretas. Se o sistema não sabe o instante de tempo em que ela foi medida ou não está preparado para fazer atualizações em instantes variáveis, o sistema irá assimialr essas informações nos instantes destacados pelas bolinhas vermelhas, deslocadas no tempo. 
+
+Slide 5:
+E qual seria o efeito disso?
+
+Em uma aplicação de estimação de estados, esse pode ser um resultado típico. O gráfico azul representa os erros de estimação da posição de um robô, quando o carimbo de tempo não é considerado e a estimação é feita de forma regular, deslocando-se os instantes de tempo. O gráfico em vermelho faz a assimilação nos instantes exatos em que as medições foram realizadas. Os pontos pretos no gráfico representam os instantes regulares de estimação e as retas tracejados instantes de medição.
+Nos primeiros instantes de medição, já observamos uma diferença no desempenho dos algoritmos, em favor de se considerar carimbo de tempo. No segundo intervalo, essa diferença é ainda maior e podemos observar a redução do erro no momento exato da medição.
+
+Slide 6:
+
+Esse efeito continua no tempo, mas a questão é: até que ponto isso afeta o desempenho? E o que influencia essa degradação no desempenho?
+
+
+Slide 7:
+Objetivos
+
+
+Slide 8:
+Na revisão do problema de amostragem irregular, nós investigamos os diversos tipos e causas das irregularidades. Para nosso estudo, optamos por um modelo genérico que é muito comum em grandes redes de sensores dessincronizados, que é o da amostragem aperiódica. Para isso, modelamos os instantes de amostragem como eventos de um processo de poisson. E os intervalos entre dois eventos, ou dois instantes de amostragem, é dado por uma distribuição exponencial. O parametro lambda da distribuição pode ser interpretado como a frequência média de amostragem
+
+
+Slide 9.
+A aplicação de fusão sensorial escolhida para o estudo é o de estimação de estados. Para esse trabalho é importante destacarmos as duas estapas de estimação: a de predição, em que o modelo de processo do sistema é utilizado, e a de assimilação de dados, em que tanto o modelo de observação é utilizado.
+
+Slide 10:
+
+Sistemas não-lineares tem seus modelos de processo e observação dados por estas equações. Como estamos falando de sistemas amostrados, o modelo contínuo de processo precisa ser discretizado, por algum método aproximado, como o de Runge Kutta por exeplo.
+Note que a discretização depende do intervalo de tempo h_k, que no nosso caso é uma variável aleatória
+
+Slide 11:
+
+Para sistemas lineares, a discretização das matrizes pode ser feita de forma exata, caso a entrada também seja discreta. De qualquer forma, também é importante ressaltar que a o modelo discreto também depende do intervalo de tempo aleatório h_k. 
+
+Essa dependência, é um dos principais motivos para o aumento no custo computacional, quando o carimbo de tempo está presente. Pois a discretização precisa ser feita em cada etapa de estimação, podendo ser algo inviável para certos sistemas. Mesmo que o carimbo de tempo esteja disponível.
+
+
+Slide 12:
+
+
+Slide 13:
+Para ilustrar o que ocorre com estimação de estados com amostragem aperiódica, trazemos essas duas linhas do tempo. A de cima, ilustra os instantes regulares de estimação ou de sinal de entrada. A linha baixa ilustra os instantes aleatórios de observação.
+
+Quando acontece a amostragem aperiódica, podem acontecer 3 cenários de estimação, aqui apresentdas pelas letras A, B e C.
+
+No caso da letra A, não houve nenhuma medição entre dois instantes de estimação. Assim, tanto para o algoritmo que considera o carimbo de tempo, quanto para o que não considera, a única coisa a se fazer é executar uma etapa de predição, entre T e 2T.
+
+Slide 14:
+
+No Cenário B, caso haja carimbo de tempo, o estimador faz uma estimação completa, entre 3T e t1. Em seguida, de t1 a 4t, executa uma etapa de predição. Nesses casos, o modelo de processo é discretizado duas vezes, considerando intervalos detempo diferente.
+Se não há carimbo de tempo, o estimador considera que a medição feita em t1 foi feita em 4T, e faz uma etapa completa de predição e assimilação de dados de 3T a 4T.
+
+Slide 15:
+No cenário C, quando há multiplas observações com carimbos de tempo corretos, faz mulitplas etapas completas, como nesse caso de 8T a t2 e de t2 a t3, para depois realizar uma etapa de predição de t3 a 9T. Se não há carimbo de tempo, o estimador considera apenas a medição mais recente, feita em t3, e a assimila em 9T. Ou seja, faz-se uma etapa completa de estimação de 8T a 9T.
+
+
+Slide 16:
+
+Uma forma de avaliarmos o efeito das aproximações do algorito sem carimbo de tempo, é analisando o erro introduzido no sinal, por causa desses deslocamentos no tempo.
+Se consideramos um modelo de observação linear e definindo delta k como a difereça do instante regular de assimilação nT do instante real de medição t_k, podemos definir o erro como a diferença entre os modelos de observação nos dois instante (t_k e t_k + delta_k).
+
+Dividindo e multiplicando o lado direito por delta_k, podemos aproximar esse termo pelo oposto da derivada de x em relação ao tempo. Mas como C dx/dt é igual a dy/dt, podemos concluir que o erro adicionado é diretamente proporcional ao oposto da derivada do sinal de saída, multiplicado pelo intervalo de tempo aleatório.
+
+
+Slide 17:
+E de fato, fizemos uma simulação em que um sinal de saída em azul foi amostrado irregularmente e suas mediçÕes deslocadas no tempo. Plotamos também a derivada do sinal em vermelho e o erro introduzido pelo deslocamento em laranja (no caso o oposto, para melhor visualização), com sua escala do lado direito do gráfico. Observamos que a derivada do sinal encapsula bem o erro adicionado, ilustrando a dedução anterior.
+
+No entanto, não é só a derivada ou a dinâmica do sinal de saída que influencia o erro, como também o nível de ruído do sinal.
+
+Slide 18:
+
+Fizemos então algumas simulações, em que o nível de ruído era variado, juntamente com a frequência de amostragem média do sinal de saída do sistema. Calculamos o RMSE do erro introduzido como sendo a diferença do RMSE do sinal deslocado com a diferença do RMSE do sinal não deslocado.
+
+Esse gráfico de superficie com intervalo de confiança de 95% em cinza apresenta os resutlados.
+
+Notamos que em níveis de ruído alto, quase não há erro adicional da amostragem aperiódica. Como a contaminação é grande e aleatória, o efeito de se deslocar os instantes de medição são irrelevantes. Da mesma forma, para frequencias muito rápidas, o erro também é minimo, pois a parcela delta_k do erro adicionado
+
+
+Slide 19:
+
+Baseado nas análises do erro, desenvolvemos cenários de simulação em que três parametros eram variados.
+No primeiro, variamos lambda, que é a frequencia média de amostragem do sinal de saída, mantendo a relação entre essa frequencia e a frequencia de estimação constantes. Dessa forma, avaliaremos como a dinamica do sinal de saída em relação a amostragem, afeta os resultados
+
+No segundo, mantemos o lambda constante, e variamos a relação entre lambda e a frequencia de estimação.
+
+No terceiro, alteramos o nível de ruído dos sinais.
+
+
+Slide 20:
+
+
+
+Slide 21:
+
+Representamos o sistema em espaço de estados, em sua forma canonica modal, ou seja com os estados desacoplados. E submetemos o estado a um sinal PRBS. 
+
+
+Slide 22:
+
+Um exemplo de estimação para um estado de cada sistema é apresentado nesse slide,. Podemos observar diferenças de desempenho do algoritmo que considera carimbo pro que não considera. A linha tracejada em azul está um pouco mais distante do que a linha em vermelho.
+
+
+Slide 23:
+
+Pros resultados, apresentamos a diferença médio após 100 realizações, nas colunas mu_d. e o tamanho do efeito, dado pelo d de cohen. Ambos como intervvalo de confiança
+
+Notamos uma tendência de aumento na diferença do RMSE, com certo limite superir. Valores de 40, 50 e 60 quase não possuem variação no tamaho de efeito. As tendencias de RMSE do algorito com caribo de tempo decresce monotonicamente. No caso do algoritmo sem carimbo de tempo, isso não acontece. No caso do estado 4, do sistema passa baixa, para ruídos maiores, o RMSE médio foi até menor. Pode ser explicado pelo fato de, com ruidos menores, a matriz de covariancia do ruido é muito subestimada, atrapalhando a estimação.
+
+Em relação a consistencia, os testes chi quadrado mostram que o algoritmo com carimbo de tempo é pouco afetado pelas mudanças, com taxas de rejeição sempre próximas de 5%. No caso do algoritmo sem carimbo, apenas para níveis altos de ruído, ela se aproxima.
+
+Slide 24:
+
+No caso de variação de lambda, as menores diferenças são observados para valores de lambda maior, o que pode ser explicado pelos menores erros introduzidos pelo deslocamento. Houve uma exceção para o estado x1, com lambda igual a 100, mas pode ser explicado pela alta variabilidade dos resultados obtidos. Em relação a consistencia, há uma aparente aumento na taxa de rejeicao para o algoritmo que considera carimbo de tempo, que pode ser explicado por erros numericos com passos de discretização muito pequenos.
+
+
+Slide 25:
+Variando-se o alpha, obseva-se que quanto maior for a frequencia de estimação em relação a da saída, menor a diferença. Se olharmos o tamanho de efeito estado x1, com alpha igual a 5, notamos que a signifância prática é muito pequena. 
+
+Em relaçDão a consistencia, observamos um efeito iteressante no teste chi quadrado para o erro, NEES. A taxa de rejeição passa de valroes próximos a 5% a a valores superiores a 50. Uma explicação considerada é que com alpha alto, há mais estimações cm apenas etapa de predição, apenas.
+
+
+Slide 26:
+
+Para o sistema não linear, consideramos um robo movel nao holomonico, cujo sistema é dado por estas equações. 
+
+
+
+Slide 29:
+
+Para o caso do robo, variamos o ruido apenas do sinal de saída, mantendo o nível do sinal de entrada constante, em 20dB. A diferenca do RMSE dos algoritmos, neste caso, também aumentou. Mas nota-se que há um limite para o tamanho de efeito, que permanece praticamente constante a partir de 60dB. É interessante notar como que, quando o erro do sistema é provocado predominantemente pelas aproximações nos isntantes de tempo, a variabilidade do resutlado é muito maior.
+
+Em relação a consistência, para sinais muito ruidosos, ambos sistemas performan praticamente igual. Apenas para SNR a partir de 40, é que  o algoritmo sem carimbo de tempo, passa a produzir estimativas não consistentes
+
+Slide 30:
+
+Em relação a variação do lambda, pela tabela observmaos uma tendencia de redução nas diferencas e no tamanho de efeito dos algoritmos, com execção para 10 Hz. Interessante notar a presença intensa de outliers no caso sem carimbo de tempo.
+
+
+Slide 31:
+
+A variação de alpha nesse caso, teve efeito aparentemente contrário ao do sistema linear. Avaliando o tamanho de efeito, no entanto, não é possível tirarmos muitas conclusões.
+
+De qualquer forma, nesse caso o SNR das observações é diferente do SNR do modelo de processo.
