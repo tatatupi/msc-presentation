@@ -280,7 +280,7 @@
 	\centering
 	%\caption{}t
 	\includegraphics[width=1\textwidth]{images/wsn.png}
-	\vspace{0.8cm}
+	\vspace{0.4cm}
 	\par
 	\tiny Fonte: Libelium
 \end{minipage}
@@ -315,7 +315,7 @@ Aplicações de fusão sensorial clássicas assumem que:
 
 \begin{itemize}
 	\item Informações são \textbf{recebidas de forma regular}
-	\item Medições possuem \textbf{carimbo de tempo} correta
+	\item Medições possuem \textbf{carimbos de tempo} confiáveis
 \end{itemize}
 
 \vspace{0.5cm}
@@ -523,7 +523,7 @@ t_{k+1} &= t_k + h_k, \label{eq:time_interval} \notag
 Queremos estimar o vetor de estados $x(iT)$ e sua covariância de forma recursiva, em intervalos igualmente espaçados $T$, considerando:
 \vspace{0.5cm}
 \begin{itemize}
-	\item Instantes de tempo das observações $t_k$ é definido pelo intervalo:
+	\item Instantes de tempo das observações $t_k$ são definidos pelo intervalo:
 	\begin{itemize}
 		\item[$\rightarrow$] $h_k \triangleq t_k - t_{k-1}$
 		\item[$\rightarrow$] $h_k \sim \mathcal{E}(\lambda)$
@@ -844,33 +844,11 @@ $\text{RMSE}_{e} \triangleq \text{RMSE}_{\tilde{y}} - \text{RMSE}_{\hat{y}}$
 %------------------------------------------------
 \begin{frame}
 \frametitle{Resultado da Estimação de Estados}
-
-\begin{minipage}[t]{0.48\linewidth}
-	\centering
-	\vspace{0.5cm}
-	\par
-
-	\centering
-	%\caption{}t
-	\includegraphics[width=0.9\textwidth]{images/gauss_fusion.pdf}
-
-	
-
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-	\vspace{0.5cm}
-	\centering
-	\begin{equation*}
-	\rho(x_k | y_k) = \mathcal{N}(x_k; \hat{x}_{k|k}, \hat{P}^{xx}_{k|k})
-	\end{equation*}
-	\vspace{-0.2cm}
-	\begin{itemize}
-		\item[$\rightarrow$] $\hat{x}_{k|k}$
-		\item[$\rightarrow$] $\hat{P}^{xx}_{k|k}$
-	\end{itemize}
-
-\end{minipage}
-
+Média do vetor de estados $\rightarrow$ $\hat{x}_{k|k}$
+\\
+\vspace{1cm}
+Covariância do vetor de estados $\rightarrow$ $\hat{P}^{xx}_{k|k}$
+\vspace{1cm}
 \pause
 \begin{block}{}
 	\centering
@@ -921,7 +899,7 @@ E\left[(x_k - \hat{x}_{k|k})(x_k - \hat{x}_{k|k})^T\right] &\triangleq E[\tilde{
 
 Uma forma de testar é definindo:
 \begin{align*}
-NEES_k &\triangleq  \tilde{x}_{k|k}^T(P^{xx}_{k|k})^{-1}\tilde{x}_{k|k} \\
+NEES_k &\triangleq  \tilde{x}_{k|k}^T(\hat{P}^{xx}_{k|k})^{-1}\tilde{x}_{k|k} \\
 NIS_k &\triangleq  \eta_{k|k-1}^T(P^{yy}_{k|k-1})^{-1}\eta_{k|k-1} \\
 \end{align*}
 
@@ -966,7 +944,7 @@ Exemplo ($\alpha=5\%$):
 %------------------------------------------------
 \begin{frame}
 \frametitle{Descrição do Sistema}
-Dois modos subamortecidos, um \color{blue}{passa-baixas} \color{black}e outro \color{red}{passa-altas} \color{black}:
+Dois modos subamortecidos, um \color{red}{passa-altas} \color{black} e outro  \color{blue}{passa-baixas}\color{black}:
 %
 %\begin{minipage}[t]{0.48\linewidth}
 %	\centering
@@ -1004,10 +982,10 @@ Dois modos subamortecidos, um \color{blue}{passa-baixas} \color{black}e outro \c
 	\tiny
 	\begin{equation}
 	A =\begin{bmatrix}
-	\color{blue}-100 & \color{blue}994.99 & 0 & 0\\
-	\color{blue}-994.99 & \color{blue}-100 & 0 & 0\\
-	0 & 0 & \color{red}-1 & \color{red}9.949\\
-	0 & 0 & \color{red}-9.949 & \color{red}-1
+	\color{red}-100 & \color{red}994.99 & 0 & 0\\
+	\color{red}-994.99 & \color{red}-100 & 0 & 0\\
+	0 & 0 & \color{blue}-1 & \color{blue}9.949\\
+	0 & 0 & \color{blue}-9.949 & \color{blue}-1
 	\end{bmatrix} \notag
 	\end{equation}
 	
@@ -1707,22 +1685,28 @@ u_i = \tilde{u}_i - w_i, \ \ w \sim \mathcal{N} (0, Q_i).
 %------------------------------------------------SUBSECTION------------------------------
 
 \section{Conclusões}
+\subsection{Contribuições e Trabalhos Futuros}
 
 %------------------------------------------------
 \begin{frame}
 \frametitle{Principais Resultados e Contribuições}
 
+Maioria dos resultados do algoritmo sem carimbo de tempo com \textbf{alta variabilidade}.
+\vspace{0.5cm}
+
+\pause
 Cenários com \textbf{maior} influência no desempenho do estimador:
 \begin{itemize}
 	\item \textbf{Baixo nível de ruído} nos sinais;
 	\item \textbf{Baixa frequência} média da amostragem irregular;
-	\item \textbf{Menor relação} entre a frequência média da amostragem irregular e a frequência de estimação, \underline{quando SNR das observações é maior que o} \underline{do modelo de processo}.
+	\item Em relação ao $\alpha$, os resultados \textbf{sugerem que depende} da relação entre o nível de ruído dos modelos de processo e observação.
 \end{itemize}
 
+\pause
 \vspace{0.5cm}
 \begin{block}{}
 	\centering
-Abordagem útil para a tomada de decisão sobre investimento em sincronização e em capacidade computacional.
+\textbf{Abordagem útil} para a tomada de \textbf{decisão sobre investimento} em sincronização e em capacidade computacional.
 \end{block}
 
 
@@ -1737,7 +1721,7 @@ Abordagem útil para a tomada de decisão sobre investimento em sincronização e em
 	\item<1-> Investigação sobre algoritmos que \textbf{compensam o erro} de deslocar instantes de tempo;
 	\item<2-> Desenvolvimento de \textbf{rotinas de sintonia} do estimador \textit{ad hoc}, com \textbf{filtragem adaptativa};
 	\item<3-> Estudo dos efeitos de amostragem irregular com a \textbf{introdução de atraso de tempo};
-	\item<4-> Utilização de outros métodos de filtragem, como o \textbf{baseado em partículas}, com potencial de ser mais robustos a ruídos não gaussianos;
+	\item<4-> Utilização de outros métodos de filtragem, como o \textbf{baseado em partículas}, com potencial de ser mais robustos a ruídos não gaussianos.
 \end{enumerate}
 
 
